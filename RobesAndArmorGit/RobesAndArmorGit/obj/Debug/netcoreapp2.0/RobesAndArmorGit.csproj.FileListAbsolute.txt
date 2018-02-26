@@ -1,0 +1,8 @@
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Debug\netcoreapp2.0\RobesAndArmorGit.deps.json
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Debug\netcoreapp2.0\RobesAndArmorGit.runtimeconfig.json
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Debug\netcoreapp2.0\RobesAndArmorGit.runtimeconfig.dev.json
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Debug\netcoreapp2.0\RobesAndArmorGit.dll
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Debug\netcoreapp2.0\RobesAndArmorGit.csprojResolveAssemblyReference.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Debug\netcoreapp2.0\RobesAndArmorGit.csproj.CoreCompileInputs.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Debug\netcoreapp2.0\RobesAndArmorGit.AssemblyInfoInputs.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Debug\netcoreapp2.0\RobesAndArmorGit.AssemblyInfo.cs
