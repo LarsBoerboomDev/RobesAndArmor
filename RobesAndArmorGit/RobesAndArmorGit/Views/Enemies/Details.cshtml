@@ -1,0 +1,54 @@
+﻿@model GameData.Models.Enemy
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Enemy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Atk)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Atk)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Def)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Def)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Health)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Health)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.imageUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.imageUrl)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,8 +1,7 @@
 ﻿using GameData.Models;
+
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace GameData
 {
@@ -12,8 +11,13 @@ namespace GameData
 
         public DbSet<Enemy> Enemies { get; set; }
         public DbSet<News> theNews { get; set; }
+        public DbSet<Character> Characters { get; set; }
+        public DbSet<Class> Classes { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Models.Type> Types { get; set; }        
 
-
+    
         /*
         public DbSet<Models.Type> types { get; set; }
         public DbSet<Enemy> enemies { get; set; }

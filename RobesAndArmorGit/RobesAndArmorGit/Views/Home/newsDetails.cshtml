@@ -1,0 +1,37 @@
+﻿@model GameData.Models.News
+
+@{
+    ViewData["Title"] = "newDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>newDetails</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Body)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Body)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.postDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.postDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    
+    <a asp-action="Index">Back</a>
+</div>
