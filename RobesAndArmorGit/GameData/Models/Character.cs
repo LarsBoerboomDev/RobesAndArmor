@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
+
 namespace GameData.Models
 {
     public class Character
@@ -15,12 +16,13 @@ namespace GameData.Models
         public int str { get; set; }
         public int Agility { get; set; }
         public int gold { get; set; }
+        public string UserID { get; set; }
 
-        [ForeignKey("Class")]
-        public int classId { get; set; }
+        public Models.Class Class { get; set; }
+        public Models.Inventory inventory { get; set; }
         
-        [ForeignKey("Inventory")]
-        public int inventoryId { get; set; }
+        
+                
 
     }
 }

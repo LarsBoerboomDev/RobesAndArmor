@@ -11,9 +11,10 @@ using System;
 namespace GameData.Migrations
 {
     [DbContext(typeof(GameContext))]
-    partial class GameContextModelSnapshot : ModelSnapshot
+    [Migration("20180228104901_ForeignKeytest")]
+    partial class ForeignKeytest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,29 +28,23 @@ namespace GameData.Migrations
 
                     b.Property<int>("Agility");
 
-                    b.Property<int?>("ClassId");
-
                     b.Property<int>("Exp");
 
                     b.Property<int>("Level");
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("UserID");
+                    b.Property<int>("classId");
 
                     b.Property<int>("gold");
 
                     b.Property<string>("imageUrl");
 
-                    b.Property<int?>("inventoryId");
+                    b.Property<int>("inventoryId");
 
                     b.Property<int>("str");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClassId");
-
-                    b.HasIndex("inventoryId");
 
                     b.ToTable("Characters");
                 });
@@ -66,8 +61,6 @@ namespace GameData.Migrations
                     b.Property<string>("Name");
 
                     b.Property<int>("Str");
-
-                    b.Property<string>("imageUrl");
 
                     b.HasKey("Id");
 
@@ -119,11 +112,7 @@ namespace GameData.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("TypeId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TypeId");
 
                     b.ToTable("Items");
                 });
@@ -151,29 +140,22 @@ namespace GameData.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int?>("ItemId");
+
                     b.Property<string>("Name");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ItemId");
+
                     b.ToTable("Types");
                 });
 
-            modelBuilder.Entity("GameData.Models.Character", b =>
+            modelBuilder.Entity("GameData.Models.Type", b =>
                 {
-                    b.HasOne("GameData.Models.Class", "Class")
-                        .WithMany()
-                        .HasForeignKey("ClassId");
-
-                    b.HasOne("GameData.Models.Inventory", "inventory")
-                        .WithMany()
-                        .HasForeignKey("inventoryId");
-                });
-
-            modelBuilder.Entity("GameData.Models.Item", b =>
-                {
-                    b.HasOne("GameData.Models.Type", "Type")
-                        .WithMany()
-                        .HasForeignKey("TypeId");
+                    b.HasOne("GameData.Models.Item")
+                        .WithMany("Type")
+                        .HasForeignKey("ItemId");
                 });
 #pragma warning restore 612, 618
         }

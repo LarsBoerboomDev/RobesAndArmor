@@ -11,5 +11,6 @@ namespace GameData.Models
         public int Str { get; set; }
         public int Agility { get; set; }
         public int Int { get; set; }
+        public string imageUrl { get; set; }
     }
 }

@@ -1,0 +1,43 @@
+﻿@model GameData.Models.Class
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Admin/AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Class</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Str)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Str)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Agility)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Agility)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Int)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Int)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,60 @@
+﻿@model RobesAndArmorGit.Models.ViewModels.CharacterRegistration
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Character</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Character.Name" class="control-label"></label>
+                <input asp-for="Character.Name" name="names" class="form-control" />
+                <span asp-validation-for="Character.Name" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <div class="faces">
+                    <img src="~/images/faces/male1.png" />
+
+                    <label><input type="radio" name="Face" value="Male 1"/> Male 1</label>
+                </div>
+                <div class="faces">
+                    <img src="~/images/faces/male2.png" />
+
+                    <label><input type="radio" name="Face" value="Male 2"/> Male 2</label>
+                </div>
+                <div class="faces">
+                    <img src="~/images/faces/female1.png" />
+
+                    <label><input type="radio" name="Face" value="Female 1"/> Female 1</label>
+                </div>
+            </div>                        
+
+            <div class="form-group">
+                
+                    @foreach (var Item in Model.Classses)
+    {
+                <div class="charClass">
+                    <label><input type="radio" name="charClass" value="@Item.Name">@Item.Name</label>
+                </div>
+}                                    
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

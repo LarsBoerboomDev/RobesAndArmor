@@ -1,0 +1,63 @@
+﻿@model GameData.Models.Class
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Admin/AdminLayout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Class</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Str" class="control-label"></label>
+                <input asp-for="Str" class="form-control" />
+                <span asp-validation-for="Str" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Agility" class="control-label"></label>
+                <input asp-for="Agility" class="form-control" />
+                <span asp-validation-for="Agility" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Int" class="control-label"></label>
+                <input asp-for="Int" class="form-control" />
+                <span asp-validation-for="Int" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="faces">
+                    <img src="~/images/classimg/Archer.png" />
+
+                    <label><input type="radio" name="image" value="Archer.png" /> Archer</label>
+                </div>
+                <div class="faces">
+                    <img src="~/images/classimg/Mage.png" />
+
+                    <label><input type="radio" name="image" value="Mage.png" />Mage</label>
+                </div>
+                <div class="faces">
+                    <img src="~/images/classimg/Swordsman.png" />
+
+                    <label><input type="radio" name="image" value="Swordsman.png" />Swordsman</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

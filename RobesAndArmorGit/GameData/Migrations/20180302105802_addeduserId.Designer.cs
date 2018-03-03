@@ -11,9 +11,10 @@ using System;
 namespace GameData.Migrations
 {
     [DbContext(typeof(GameContext))]
-    partial class GameContextModelSnapshot : ModelSnapshot
+    [Migration("20180302105802_addeduserId")]
+    partial class addeduserId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +36,7 @@ namespace GameData.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("UserID");
+                    b.Property<int>("UserID");
 
                     b.Property<int>("gold");
 
@@ -66,8 +67,6 @@ namespace GameData.Migrations
                     b.Property<string>("Name");
 
                     b.Property<int>("Str");
-
-                    b.Property<string>("imageUrl");
 
                     b.HasKey("Id");
 
