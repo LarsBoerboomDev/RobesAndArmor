@@ -15,6 +15,7 @@ namespace GameData.Models
         public int Exp { get; set; }
         public int str { get; set; }
         public int Agility { get; set; }
+        public int INT { get; set; }
         public int gold { get; set; }
         public string UserID { get; set; }
 

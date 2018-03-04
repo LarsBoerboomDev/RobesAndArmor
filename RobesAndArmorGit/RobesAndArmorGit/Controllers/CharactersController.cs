@@ -10,6 +10,7 @@ using GameData.Models;
 using Microsoft.AspNetCore.Identity;
 using RobesAndArmorGit.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RobesAndArmorGit.Controllers
 {
@@ -27,6 +28,7 @@ namespace RobesAndArmorGit.Controllers
         }
 
         // GET: Characters
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Characters.ToListAsync());
@@ -37,6 +39,7 @@ namespace RobesAndArmorGit.Controllers
 
 
         // GET: Characters/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -57,6 +60,17 @@ namespace RobesAndArmorGit.Controllers
         // GET: Characters/Create
         public async Task<IActionResult> Create()
         {
+            //Checks if user already has a character
+            ApplicationUser usr = await GetCurrentUserAsync();
+
+            var character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.Id);
+            // returns to homepage index if user already has a character
+            if(character != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
+
 
             Models.ViewModels.CharacterRegistration viewmodel = new Models.ViewModels.CharacterRegistration();
             viewmodel.Classses = await _context.Classes.ToListAsync();
@@ -77,13 +91,31 @@ namespace RobesAndArmorGit.Controllers
             ApplicationUser usr = await GetCurrentUserAsync();
             string id = usr.Id;
 
+            
+            Inventory inventory = new Inventory();
+            inventory.Size = 32;
+            _context.Add(inventory);
+            await _context.SaveChangesAsync();
+            
+            int classId = Convert.ToInt32(charClass);
+            Class CharacterClass = new Class();
+            CharacterClass = await _context.Classes.SingleOrDefaultAsync(m => m.Id == classId);
+            
+            
+
 
             Character newcharacter = new Character();
             newcharacter.Name = names;
             newcharacter.gold = 500;
             newcharacter.imageUrl = Face;
             newcharacter.Level = 1;
+            newcharacter.Exp = 0;
             newcharacter.UserID = id;
+            newcharacter.str = CharacterClass.Str;
+            newcharacter.Agility = CharacterClass.Agility;
+            newcharacter.INT = CharacterClass.Int;
+            newcharacter.Class = CharacterClass;
+            newcharacter.inventory = inventory;
             
             
 
@@ -97,6 +129,7 @@ namespace RobesAndArmorGit.Controllers
         }
 
         // GET: Characters/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -115,6 +148,7 @@ namespace RobesAndArmorGit.Controllers
         // POST: Characters/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,imageUrl,Level,Exp,str,Agility,gold,UserID")] Character character)
@@ -148,6 +182,7 @@ namespace RobesAndArmorGit.Controllers
         }
 
         // GET: Characters/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -166,6 +201,7 @@ namespace RobesAndArmorGit.Controllers
         }
 
         // POST: Characters/Delete/5
+        [Authorize(Roles = "Admin")]        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

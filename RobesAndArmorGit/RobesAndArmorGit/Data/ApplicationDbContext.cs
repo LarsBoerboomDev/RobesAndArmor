@@ -24,5 +24,7 @@ namespace RobesAndArmorGit.Data
         }
 
         public DbSet<RobesAndArmorGit.Models.ApplicationUser> ApplicationUser { get; set; }
+
+        
     }
 }

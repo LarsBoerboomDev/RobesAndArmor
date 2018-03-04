@@ -11,9 +11,10 @@ using System;
 namespace GameData.Migrations
 {
     [DbContext(typeof(GameContext))]
-    partial class GameContextModelSnapshot : ModelSnapshot
+    [Migration("20180304125220_CharIntAdded")]
+    partial class CharIntAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,19 +111,6 @@ namespace GameData.Migrations
                     b.ToTable("Inventories");
                 });
 
-            modelBuilder.Entity("GameData.Models.Inventory_has_Item", b =>
-                {
-                    b.Property<int>("InventoryId");
-
-                    b.Property<int>("ItemId");
-
-                    b.HasKey("InventoryId", "ItemId");
-
-                    b.HasIndex("ItemId");
-
-                    b.ToTable("Inventory_has_Item");
-                });
-
             modelBuilder.Entity("GameData.Models.Item", b =>
                 {
                     b.Property<int>("Id")
@@ -182,19 +170,6 @@ namespace GameData.Migrations
                     b.HasOne("GameData.Models.Inventory", "inventory")
                         .WithMany()
                         .HasForeignKey("inventoryId");
-                });
-
-            modelBuilder.Entity("GameData.Models.Inventory_has_Item", b =>
-                {
-                    b.HasOne("GameData.Models.Inventory", "Inventory")
-                        .WithMany()
-                        .HasForeignKey("InventoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GameData.Models.Item", "Item")
-                        .WithMany()
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("GameData.Models.Item", b =>

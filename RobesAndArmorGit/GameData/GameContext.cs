@@ -18,6 +18,15 @@ namespace GameData
         public DbSet<Models.Type> Types { get; set; }        
 
     
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Inventory_has_Item>()
+                .HasKey(t => new { t.InventoryId, t.ItemId });
+
+            modelBuilder.Entity<Enemy_has_Item>()
+                .HasKey(t => new { t.EnemyId, t.ItemId });
+        }
+
         /*
         public DbSet<Models.Type> types { get; set; }
         public DbSet<Enemy> enemies { get; set; }
