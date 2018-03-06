@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RobesAndArmorGit.Models.ApplicationUser>
+﻿@model IEnumerable<GameData.Models.Item>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,15 +14,14 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.UserName)
+                    @Html.DisplayNameFor(model => model.Name)
                 </th>
-               
                 <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>                                                         
+                    @Html.DisplayNameFor(model => model.Def)
+                </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PhoneNumber)
-                </th>                                           
+                    @Html.DisplayNameFor(model => model.Atk)
+                </th>
             <th></th>
         </tr>
     </thead>
@@ -30,14 +29,14 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>           
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>                               
+                @Html.DisplayFor(modelItem => item.Def)
+            </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>                             
+                @Html.DisplayFor(modelItem => item.Atk)
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

@@ -38,6 +38,7 @@ namespace RobesAndArmorGit.Controllers
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
 
+
         // GET: Characters/Details/5
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
@@ -56,7 +57,25 @@ namespace RobesAndArmorGit.Controllers
 
             return View(character);
         }
+       
 
+        public async Task<IActionResult> CharacterInformation()
+        {
+            ApplicationUser usr = await GetCurrentUserAsync();
+            var character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.Id);
+            Character Char = new Character();
+            return View(Char);
+        }
+
+        public async Task<IActionResult> CharDetails()
+        {
+            ApplicationUser usr = await GetCurrentUserAsync();
+            var character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.Id);
+            Character MyChar = character;
+            return View("_CharacterPartial", MyChar);
+        }
+        
+        
         // GET: Characters/Create
         public async Task<IActionResult> Create()
         {
@@ -123,7 +142,7 @@ namespace RobesAndArmorGit.Controllers
             {
                 _context.Add(newcharacter);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");                
             }
             return View(newcharacter);
         }

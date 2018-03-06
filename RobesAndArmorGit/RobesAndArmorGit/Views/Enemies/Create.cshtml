@@ -1,4 +1,5 @@
-﻿@model GameData.Models.Enemy
+﻿@model RobesAndArmorGit.Models.ViewModels.EnemyItem
+
 
 @{
     ViewData["Title"] = "Create";
@@ -14,38 +15,38 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="Enemy.Name" class="control-label"></label>
+                <input asp-for="Enemy.Name" class="form-control" />
+                <span asp-validation-for="Enemy.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Level" class="control-label"></label>
-                <input asp-for="Level" class="form-control" />
-                <span asp-validation-for="Level" class="text-danger"></span>
+                <label asp-for="Enemy.Level" class="control-label"></label>
+                <input asp-for="Enemy.Level" class="form-control" />
+                <span asp-validation-for="Enemy.Level" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Atk" class="control-label"></label>
-                <input asp-for="Atk" class="form-control" />
-                <span asp-validation-for="Atk" class="text-danger"></span>
+                <label asp-for="Enemy.Atk" class="control-label"></label>
+                <input asp-for="Enemy.Atk" class="form-control" />
+                <span asp-validation-for="Enemy.Atk" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Def" class="control-label"></label>
-                <input asp-for="Def" class="form-control" />
-                <span asp-validation-for="Def" class="text-danger"></span>
+                <label asp-for="Enemy.Def" class="control-label"></label>
+                <input asp-for="Enemy.Def" class="form-control" />
+                <span asp-validation-for="Enemy.Def" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Health" class="control-label"></label>
-                <input asp-for="Health" class="form-control" />
-                <span asp-validation-for="Health" class="text-danger"></span>
+                <label asp-for="Enemy.Health" class="control-label"></label>
+                <input asp-for="Enemy.Health" class="form-control" />
+                <span asp-validation-for="Enemy.Health" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="imageUrl" class="control-label"></label>
-                <input asp-for="imageUrl" class="form-control" />
-                <span asp-validation-for="imageUrl" class="text-danger"></span>
+                <label asp-for="Enemy.imageUrl" class="control-label"></label>
+                <input asp-for="Enemy.imageUrl" class="form-control" />
+                <span asp-validation-for="Enemy.imageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+            </div>            
         </form>
     </div>
 </div>

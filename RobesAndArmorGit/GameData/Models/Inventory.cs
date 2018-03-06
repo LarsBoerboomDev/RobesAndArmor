@@ -8,5 +8,7 @@ namespace GameData.Models
     {
         public int Id { get; set; }
         public int Size { get; set; }
+
+        public ICollection<Inventory_has_Item> Inventory_Has_Item { get; } = new List<Inventory_has_Item>();
     }
 }

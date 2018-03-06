@@ -7,27 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GameData;
 using GameData.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace RobesAndArmorGit.Controllers
 {
-    public class EnemiesController : Controller
+    public class TypesController : Controller
     {
         private readonly GameContext _context;
 
-        public EnemiesController(GameContext context)
+        public TypesController(GameContext context)
         {
             _context = context;
         }
 
-        // GET: Enemies
-        [Authorize(Roles = "Admin")]
+        // GET: Types
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Enemies.ToListAsync());
+            return View(await _context.Types.ToListAsync());
         }
 
-        // GET: Enemies/Details/5
+        // GET: Types/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,46 +33,39 @@ namespace RobesAndArmorGit.Controllers
                 return NotFound();
             }
 
-            var enemy = await _context.Enemies
+            var @type = await _context.Types
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (enemy == null)
+            if (@type == null)
             {
                 return NotFound();
             }
 
-            return View(enemy);
+            return View(@type);
         }
 
-        // GET: Enemies/Create
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create()
+        // GET: Types/Create
+        public IActionResult Create()
         {
-            Models.ViewModels.EnemyItem enemyItem = new Models.ViewModels.EnemyItem();
-            enemyItem.AllItems = await _context.Items.ToListAsync();
-            enemyItem.Type = await _context.Types.ToListAsync();
-            enemyItem.Enemy = new Enemy();
-
-            return View(enemyItem);
+            return View();
         }
 
-        // POST: Enemies/Create
+        // POST: Types/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Level,Atk,Def,Health,imageUrl")] Enemy enemy)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description")] GameData.Models.Type @type)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(enemy);
+                _context.Add(@type);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(enemy);
+            return View(@type);
         }
 
-        // GET: Enemies/Edit/5
-        [Authorize(Roles = "Admin")]
+        // GET: Types/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,23 +73,22 @@ namespace RobesAndArmorGit.Controllers
                 return NotFound();
             }
 
-            var enemy = await _context.Enemies.SingleOrDefaultAsync(m => m.Id == id);
-            if (enemy == null)
+            var @type = await _context.Types.SingleOrDefaultAsync(m => m.Id == id);
+            if (@type == null)
             {
                 return NotFound();
             }
-            return View(enemy);
+            return View(@type);
         }
 
-        // POST: Enemies/Edit/5
+        // POST: Types/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Level,Atk,Def,Health,imageUrl")] Enemy enemy)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] GameData.Models.Type @type)
         {
-            if (id != enemy.Id)
+            if (id != @type.Id)
             {
                 return NotFound();
             }
@@ -107,12 +97,12 @@ namespace RobesAndArmorGit.Controllers
             {
                 try
                 {
-                    _context.Update(enemy);
+                    _context.Update(@type);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EnemyExists(enemy.Id))
+                    if (!TypeExists(@type.Id))
                     {
                         return NotFound();
                     }
@@ -123,11 +113,10 @@ namespace RobesAndArmorGit.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(enemy);
+            return View(@type);
         }
 
-        // GET: Enemies/Delete/5
-        [Authorize(Roles = "Admin")]
+        // GET: Types/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,31 +124,30 @@ namespace RobesAndArmorGit.Controllers
                 return NotFound();
             }
 
-            var enemy = await _context.Enemies
+            var @type = await _context.Types
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (enemy == null)
+            if (@type == null)
             {
                 return NotFound();
             }
 
-            return View(enemy);
+            return View(@type);
         }
 
-        // POST: Enemies/Delete/5
-        [Authorize(Roles = "Admin")]
+        // POST: Types/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var enemy = await _context.Enemies.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Enemies.Remove(enemy);
+            var @type = await _context.Types.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Types.Remove(@type);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EnemyExists(int id)
+        private bool TypeExists(int id)
         {
-            return _context.Enemies.Any(e => e.Id == id);
+            return _context.Types.Any(e => e.Id == id);
         }
     }
 }

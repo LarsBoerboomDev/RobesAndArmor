@@ -7,27 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GameData;
 using GameData.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace RobesAndArmorGit.Controllers
 {
-    public class EnemiesController : Controller
+    public class ItemsController : Controller
     {
         private readonly GameContext _context;
 
-        public EnemiesController(GameContext context)
+        public ItemsController(GameContext context)
         {
             _context = context;
         }
 
-        // GET: Enemies
-        [Authorize(Roles = "Admin")]
+        // GET: Items
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Enemies.ToListAsync());
+            return View(await _context.Items.ToListAsync());
         }
 
-        // GET: Enemies/Details/5
+        // GET: Items/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,46 +33,39 @@ namespace RobesAndArmorGit.Controllers
                 return NotFound();
             }
 
-            var enemy = await _context.Enemies
+            var item = await _context.Items
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (enemy == null)
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return View(enemy);
+            return View(item);
         }
 
-        // GET: Enemies/Create
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create()
+        // GET: Items/Create
+        public IActionResult Create()
         {
-            Models.ViewModels.EnemyItem enemyItem = new Models.ViewModels.EnemyItem();
-            enemyItem.AllItems = await _context.Items.ToListAsync();
-            enemyItem.Type = await _context.Types.ToListAsync();
-            enemyItem.Enemy = new Enemy();
-
-            return View(enemyItem);
+            return View();
         }
 
-        // POST: Enemies/Create
+        // POST: Items/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Level,Atk,Def,Health,imageUrl")] Enemy enemy)
+        public async Task<IActionResult> Create([Bind("Id,Name,Def,Atk")] Item item)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(enemy);
+                _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(enemy);
+            return View(item);
         }
 
-        // GET: Enemies/Edit/5
-        [Authorize(Roles = "Admin")]
+        // GET: Items/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,23 +73,22 @@ namespace RobesAndArmorGit.Controllers
                 return NotFound();
             }
 
-            var enemy = await _context.Enemies.SingleOrDefaultAsync(m => m.Id == id);
-            if (enemy == null)
+            var item = await _context.Items.SingleOrDefaultAsync(m => m.Id == id);
+            if (item == null)
             {
                 return NotFound();
             }
-            return View(enemy);
+            return View(item);
         }
 
-        // POST: Enemies/Edit/5
+        // POST: Items/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Level,Atk,Def,Health,imageUrl")] Enemy enemy)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Def,Atk")] Item item)
         {
-            if (id != enemy.Id)
+            if (id != item.Id)
             {
                 return NotFound();
             }
@@ -107,12 +97,12 @@ namespace RobesAndArmorGit.Controllers
             {
                 try
                 {
-                    _context.Update(enemy);
+                    _context.Update(item);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EnemyExists(enemy.Id))
+                    if (!ItemExists(item.Id))
                     {
                         return NotFound();
                     }
@@ -123,11 +113,10 @@ namespace RobesAndArmorGit.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(enemy);
+            return View(item);
         }
 
-        // GET: Enemies/Delete/5
-        [Authorize(Roles = "Admin")]
+        // GET: Items/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,31 +124,30 @@ namespace RobesAndArmorGit.Controllers
                 return NotFound();
             }
 
-            var enemy = await _context.Enemies
+            var item = await _context.Items
                 .SingleOrDefaultAsync(m => m.Id == id);
-            if (enemy == null)
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return View(enemy);
+            return View(item);
         }
 
-        // POST: Enemies/Delete/5
-        [Authorize(Roles = "Admin")]
+        // POST: Items/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var enemy = await _context.Enemies.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Enemies.Remove(enemy);
+            var item = await _context.Items.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Items.Remove(item);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EnemyExists(int id)
+        private bool ItemExists(int id)
         {
-            return _context.Enemies.Any(e => e.Id == id);
+            return _context.Items.Any(e => e.Id == id);
         }
     }
 }

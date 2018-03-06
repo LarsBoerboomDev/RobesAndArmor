@@ -9,6 +9,6 @@ C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndAr
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Debug\netcoreapp2.0\RobesAndArmorGit.pdb
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Debug\netcoreapp2.0\GameData.dll
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Debug\netcoreapp2.0\GameData.pdb
-C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Debug\netcoreapp2.0\RobesAndArmorGit.dll
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Debug\netcoreapp2.0\RobesAndArmorGit.pdb
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

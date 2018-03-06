@@ -19,7 +19,10 @@ namespace GameData.Models
         public int gold { get; set; }
         public string UserID { get; set; }
 
+        public int ClassId { get; set; }
         public Models.Class Class { get; set; }
+
+        public int InventoryId { get; set; }
         public Models.Inventory inventory { get; set; }
         
         

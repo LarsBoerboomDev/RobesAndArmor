@@ -7,17 +7,22 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GameData;
 using GameData.Models;
+using Microsoft.AspNetCore.Identity;
+using RobesAndArmorGit.Models;
 
 namespace RobesAndArmorGit.Controllers
 {
     public class InventoriesController : Controller
     {
         private readonly GameContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public InventoriesController(GameContext context)
+        public InventoriesController(GameContext context , UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         // GET: Inventories
         public async Task<IActionResult> Index()
@@ -80,6 +85,19 @@ namespace RobesAndArmorGit.Controllers
             }
             return View(inventory);
         }
+
+        public async Task<IActionResult> CharacterItems()
+        {
+            ApplicationUser usr = await GetCurrentUserAsync();
+            Character Character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.Id);
+            Models.ViewModels.InventoryItems inventory = new Models.ViewModels.InventoryItems();            
+            inventory.Inventory = await _context.Inventories.SingleOrDefaultAsync(m => m.Id == Character.InventoryId);            
+            inventory.Items = _context.Items.Where(emp => emp.Inventory_Has_Item.Any(r => r.InventoryId == Character.InventoryId)).ToList();
+            inventory.minimumSize = inventory.Items.Count;
+            return View(inventory);
+            
+        }
+
 
         // POST: Inventories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

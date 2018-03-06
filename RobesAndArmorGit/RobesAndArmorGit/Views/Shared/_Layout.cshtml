@@ -32,10 +32,23 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>                    
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>  
+                    <li class="k-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><asp:Literal runat="server" Text="<%$Resources:Resources, Language%>" />Character<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="Characters" asp-action="CharacterInformation">Character</a></li>
+                            <li><a asp-area="" asp-controller="Inventories" asp-action="CharacterItems">Inventory</a></li>
+                        </ul>
+                    </li>
                     <li><a asp-area="" asp-controller="Admin" asp-action="Index">adminPanel</a></li>
+                    <li class="k-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><asp:Literal runat="server" Text="<%$Resources:Resources, Language%>" />Enemy<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                           
+                        </ul>
+                    </li>
                 </ul>
-                @await Html.PartialAsync("_LoginPartial")
+                @await Html.PartialAsync("_LoginPartial")                
             </div>
         </div>
     </nav>

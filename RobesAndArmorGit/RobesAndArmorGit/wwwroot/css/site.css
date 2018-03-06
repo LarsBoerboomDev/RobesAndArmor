@@ -43,5 +43,19 @@
 }
 .faces img{
     width: 100%;
+    
+}
+.CharacterDropDown{
+    height: 200px;
+    width: 100px;
+    background-color: grey;
+}
+.faceList{
     height: 100%;
+    overflow: auto;
+}
+
+.item{
+    border: 2px #cccdce;
+    border-radius: 8px;
 }

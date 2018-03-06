@@ -11,9 +11,10 @@ using System;
 namespace GameData.Migrations
 {
     [DbContext(typeof(GameContext))]
-    partial class GameContextModelSnapshot : ModelSnapshot
+    [Migration("20180305121503_addedEnemyMtN")]
+    partial class addedEnemyMtN
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,13 +28,11 @@ namespace GameData.Migrations
 
                     b.Property<int>("Agility");
 
-                    b.Property<int>("ClassId");
+                    b.Property<int?>("ClassId");
 
                     b.Property<int>("Exp");
 
                     b.Property<int>("INT");
-
-                    b.Property<int>("InventoryId");
 
                     b.Property<int>("Level");
 
@@ -45,13 +44,15 @@ namespace GameData.Migrations
 
                     b.Property<string>("imageUrl");
 
+                    b.Property<int?>("inventoryId");
+
                     b.Property<int>("str");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ClassId");
 
-                    b.HasIndex("InventoryId");
+                    b.HasIndex("inventoryId");
 
                     b.ToTable("Characters");
                 });
@@ -145,8 +146,6 @@ namespace GameData.Migrations
 
                     b.Property<int>("Def");
 
-                    b.Property<string>("Description");
-
                     b.Property<string>("Name");
 
                     b.Property<int?>("TypeId");
@@ -192,13 +191,11 @@ namespace GameData.Migrations
                 {
                     b.HasOne("GameData.Models.Class", "Class")
                         .WithMany()
-                        .HasForeignKey("ClassId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ClassId");
 
                     b.HasOne("GameData.Models.Inventory", "inventory")
                         .WithMany()
-                        .HasForeignKey("InventoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("inventoryId");
                 });
 
             modelBuilder.Entity("GameData.Models.Enemy_has_Item", b =>
@@ -217,12 +214,12 @@ namespace GameData.Migrations
             modelBuilder.Entity("GameData.Models.Inventory_has_Item", b =>
                 {
                     b.HasOne("GameData.Models.Inventory", "Inventory")
-                        .WithMany("Inventory_Has_Item")
+                        .WithMany()
                         .HasForeignKey("InventoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("GameData.Models.Item", "Item")
-                        .WithMany("Inventory_Has_Item")
+                        .WithMany()
                         .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

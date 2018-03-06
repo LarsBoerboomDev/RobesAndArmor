@@ -1,0 +1,62 @@
+﻿@model RobesAndArmorGit.Models.ViewModels.InventoryItems
+@{
+    ViewData["Title"] = "View1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View1</h2>
+
+
+<div class="container">
+    <h2>Items</h2>
+    @foreach (var item in Model.Items)
+    {
+        <div class="item">
+            <div class="container">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+
+@*
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+*@

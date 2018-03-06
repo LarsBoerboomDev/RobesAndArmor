@@ -18,8 +18,8 @@
                 <input asp-for="Character.Name" name="names" class="form-control" />
                 <span asp-validation-for="Character.Name" class="text-danger"></span>
             </div>
-          
-            <div class="form-group">
+          <h3>Select your character face</h3>
+            <div class="faceList">
                 <div class="faces">
                     <img src="~/images/faces/male1.png" />
 
@@ -37,6 +37,7 @@
                 </div>
             </div>                        
 
+            <h3>Select your character class</h3>
             <div class="form-group">
                 
                     @foreach (var Item in Model.Classses)

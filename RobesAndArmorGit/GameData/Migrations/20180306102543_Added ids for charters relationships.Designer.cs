@@ -11,9 +11,10 @@ using System;
 namespace GameData.Migrations
 {
     [DbContext(typeof(GameContext))]
-    partial class GameContextModelSnapshot : ModelSnapshot
+    [Migration("20180306102543_Added ids for charters relationships")]
+    partial class Addedidsforchartersrelationships
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,8 +145,6 @@ namespace GameData.Migrations
                     b.Property<int>("Atk");
 
                     b.Property<int>("Def");
-
-                    b.Property<string>("Description");
 
                     b.Property<string>("Name");
 
