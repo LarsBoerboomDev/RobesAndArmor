@@ -9,6 +9,7 @@ using GameData;
 using GameData.Models;
 using Microsoft.AspNetCore.Identity;
 using RobesAndArmorGit.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RobesAndArmorGit.Controllers
 {
@@ -86,6 +87,7 @@ namespace RobesAndArmorGit.Controllers
             return View(inventory);
         }
 
+        [Authorize(Roles = "Admin, User" )]
         public async Task<IActionResult> CharacterItems()
         {
             ApplicationUser usr = await GetCurrentUserAsync();

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GameData;
 using GameData.Models;
+using System.IO;
 
 namespace RobesAndArmorGit.Controllers
 {
@@ -46,7 +47,16 @@ namespace RobesAndArmorGit.Controllers
         // GET: Items/Create
         public IActionResult Create()
         {
-            return View();
+            Models.ViewModels.itemCreateImages view = new Models.ViewModels.itemCreateImages();
+            string path = Path.Combine(Environment.CurrentDirectory, @"wwwroot\images\item\");
+            view.images = new List<string>();
+            foreach (string difile in Directory.GetFiles(path))
+            {
+
+                view.images.Add(Path.GetFileName(difile));
+            }
+
+            return View(view);
         }
 
         // POST: Items/Create
@@ -54,8 +64,17 @@ namespace RobesAndArmorGit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Def,Atk")] Item item)
+        public async Task<IActionResult> create(string name,string def,string atk, string description, string itemimg,string level)
+        //public async Task<IActionResult> Create([Bind("Id,Name,Def,Atk")] Item item)
+        
         {
+            GameData.Models.Item item = new Item();
+            item.Atk = Convert.ToInt32(atk);
+            item.Def = Convert.ToInt32(def);
+            item.Level = Convert.ToInt32( level);
+            item.Name = name;
+            item.imgeUrl = itemimg;
+
             if (ModelState.IsValid)
             {
                 _context.Add(item);
@@ -64,6 +83,8 @@ namespace RobesAndArmorGit.Controllers
             }
             return View(item);
         }
+        
+
 
         // GET: Items/Edit/5
         public async Task<IActionResult> Edit(int? id)

@@ -64,6 +64,7 @@ namespace RobesAndArmorGit.Controllers
             ApplicationUser usr = await GetCurrentUserAsync();
             var character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.Id);
             Character Char = new Character();
+            Char = character;
             return View(Char);
         }
 
@@ -108,7 +109,7 @@ namespace RobesAndArmorGit.Controllers
         public async Task<IActionResult> Create(string names,string Face, string charClass)
         {
             ApplicationUser usr = await GetCurrentUserAsync();
-            string id = usr.Id;
+            string id = usr.UserName;
 
             
             Inventory inventory = new Inventory();
@@ -142,9 +143,17 @@ namespace RobesAndArmorGit.Controllers
             {
                 _context.Add(newcharacter);
                 await _context.SaveChangesAsync();
+                await ChangeUserRoleAsync(usr);
                 return RedirectToAction("Index", "Home");                
             }
             return View(newcharacter);
+        }
+
+        private async Task ChangeUserRoleAsync(ApplicationUser usr)
+        {
+            //changes the role of a user to player
+           await _userManager.RemoveFromRoleAsync(usr, "User");
+           await _userManager.AddToRoleAsync(usr, "Player");
         }
 
         // GET: Characters/Edit/5

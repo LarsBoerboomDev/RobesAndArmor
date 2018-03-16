@@ -5,13 +5,9 @@ using System.Threading.Tasks;
 
 namespace RobesAndArmorGit.Models.ViewModels
 {
-    public class InventoryItems
+    public class ShopItems
     {
-        //ViewModel for the inventory of a user
+        //ViewModel for the store
         public List<GameData.Models.Item> Items { get; set; }
-        public GameData.Models.Inventory Inventory { get; set; }
-        public int minimumSize { get; set; }
-        
-
     }
 }

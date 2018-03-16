@@ -1,4 +1,5 @@
-﻿@model GameData.Models.Item
+﻿@model RobesAndArmorGit.Models.ViewModels.itemCreateImages
+
 
 @{
     ViewData["Title"] = "Create";
@@ -10,23 +11,44 @@
 <h4>Item</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4">       
+       
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="item.Name" class="control-label"></label>
+                <input asp-for="item.Name" name="name" class="form-control" />
+                <span asp-validation-for="item.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Def" class="control-label"></label>
-                <input asp-for="Def" class="form-control" />
-                <span asp-validation-for="Def" class="text-danger"></span>
+                <label asp-for="item.Level" class="control-label"></label>
+                <input asp-for="item.Level" name="level" class="form-control" />
+                <span asp-validation-for="item.Level" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Atk" class="control-label"></label>
-                <input asp-for="Atk" class="form-control" />
-                <span asp-validation-for="Atk" class="text-danger"></span>
+                <label asp-for="item.Def" class="control-label"></label>
+                <input asp-for="item.Def" name="def" class="form-control" />
+                <span asp-validation-for="item.Def" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="item.Atk" class="control-label"></label>
+                <input asp-for="item.Atk" name="atk" class="form-control" />
+                <span asp-validation-for="item.Atk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="item.Description" class="control-label"></label>
+                <textarea asp-for="item.Description" name="description" class="form-control"></textarea>
+                <span asp-validation-for="item.Description" class="text-danger"></span>
+            </div>
+            <div class="imgList">
+                @foreach (var Img in Model.images)
+        {
+            <div class="image">
+                <img src="~/images/item/@Img" />
+                <label><input type="radio" name="itemimg" value="@Img" />@Img</label>
+            </div>
+
+}
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

@@ -38,6 +38,7 @@ namespace RobesAndArmorGit
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<UserResolverService>();
 
             services.AddMvc();
 
@@ -54,7 +55,7 @@ namespace RobesAndArmorGit
             
 
             // var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-            string[] roleNames = { "Admin", "User" };
+            string[] roleNames = { "Admin", "User" , "Player"};
             IdentityResult roleResult;
             
             foreach (var roleName in roleNames)

@@ -11,9 +11,10 @@ using System;
 namespace GameData.Migrations
 {
     [DbContext(typeof(GameContext))]
-    partial class GameContextModelSnapshot : ModelSnapshot
+    [Migration("20180307110245_addedLevelToItem")]
+    partial class addedLevelToItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,8 +153,6 @@ namespace GameData.Migrations
                     b.Property<string>("Name");
 
                     b.Property<int?>("TypeId");
-
-                    b.Property<string>("imgeUrl");
 
                     b.HasKey("Id");
 

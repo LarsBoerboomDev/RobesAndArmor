@@ -5,23 +5,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using GameData;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RobesAndArmorGit.Models;
+using RobesAndArmorGit.Services;
 
 namespace RobesAndArmorGit.Controllers
 {
     public class HomeController : Controller
     {
         private readonly GameContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
+        public string _currentUser;
 
-        public HomeController(GameContext context)
+        public HomeController(GameContext context, UserResolverService userSerivce)
         {
-            _context = context;
+            _context = context;            
+            _currentUser = userSerivce.getUserAsync();
         }
+        
         public async Task<IActionResult> Index()
         {
             return View(await _context.theNews.ToListAsync());
+            
+        }
+        
+        private void checkUse()
+        {
             
         }
 

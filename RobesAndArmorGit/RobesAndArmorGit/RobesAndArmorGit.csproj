@@ -23,4 +23,8 @@
     <ProjectReference Include="..\GameData\GameData.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Seeds\" />
+  </ItemGroup>
+
 </Project>
