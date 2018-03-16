@@ -16,6 +16,7 @@ namespace GameData.Models
         public int Atk { get; set; }       
         public string imgeUrl { get; set; }
         
+        public int typeId { get; set; }
         public Type Type { get; set; }
 
         public ICollection<Inventory_has_Item> Inventory_Has_Item { get; } = new List<Inventory_has_Item>();

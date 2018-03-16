@@ -40,6 +40,10 @@
                 <textarea asp-for="item.Description" name="description" class="form-control"></textarea>
                 <span asp-validation-for="item.Description" class="text-danger"></span>
             </div>
+            @foreach (var Img in Model.type)
+            {
+               <label><input type="radio" name="type" value="@Img.Name" />@Img.Name</label>
+            }
             <div class="imgList">
                 @foreach (var Img in Model.images)
         {

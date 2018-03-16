@@ -50,6 +50,8 @@ namespace RobesAndArmorGit.Controllers
             Models.ViewModels.itemCreateImages view = new Models.ViewModels.itemCreateImages();
             string path = Path.Combine(Environment.CurrentDirectory, @"wwwroot\images\item\");
             view.images = new List<string>();
+            
+            view.type = _context.Types.ToList();
             foreach (string difile in Directory.GetFiles(path))
             {
 
