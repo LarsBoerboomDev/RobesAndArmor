@@ -15,7 +15,10 @@ namespace GameData
         public DbSet<Class> Classes { get; set; }
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Item> Items { get; set; }
-        public DbSet<Models.Type> Types { get; set; }        
+        public DbSet<Models.Type> Types { get; set; }
+        public DbSet<Inventory_has_Item> Inventory_has_Item { get; set; }
+        public DbSet<Enemy_has_Item> Enemy_has_Item { get; set; }
+        public DbSet<Equipment> Equipment { get; set; }
 
     
         protected override void OnModelCreating(ModelBuilder modelBuilder)

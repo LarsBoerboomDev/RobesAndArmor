@@ -1,8 +1,8 @@
-﻿@model GameData.Models.Item
+﻿@model RobesAndArmorGit.Models.ViewModels.itemEdit
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Views/Admin/AdminLayout.cshtml";
+	ViewData["Title"] = "Edit";
+	Layout = "~/Views/Admin/AdminLayout.cshtml";
 }
 
 <h2>Edit</h2>
@@ -10,33 +10,88 @@
 <h4>Item</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Def" class="control-label"></label>
-                <input asp-for="Def" class="form-control" />
-                <span asp-validation-for="Def" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Atk" class="control-label"></label>
-                <input asp-for="Atk" class="form-control" />
-                <span asp-validation-for="Atk" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
+	<div class="col-md-4">
+		<form asp-action="Edit">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="item.Id" />
+			<div class="form-group">
+				<label asp-for="item.Name" class="control-label"></label>
+				<input asp-for="item.Name" class="form-control" />
+				<span asp-validation-for="item.Name" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="item.Level" class="control-label"></label>
+				<input asp-for="item.Level" class="form-control" />
+				<span asp-validation-for="item.Level" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="item.Def" class="control-label"></label>
+				<input asp-for="item.Def" class="form-control" />
+				<span asp-validation-for="item.Def" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="item.Atk" class="control-label"></label>
+				<input asp-for="item.Atk" class="form-control" />
+				<span asp-validation-for="item.Atk" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="item.Health" class="control-label"></label>
+				<input asp-for="item.Health" class="form-control" />
+				<span asp-validation-for="item.Health" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="item.Description" class="control-label"></label>
+				<textarea asp-for="item.Description" class="form-control"></textarea>
+				<span asp-validation-for="item.Description" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label>Select the item type: </label>
+				@foreach (var type in Model.type)
+		{
+
+			@if (Model.item.typeId.Equals(type.Id))
+	{
+		<label><input type="radio" checked="checked" name="type" value="@type.Id" />@type.Name</label>
+}
+else
+{
+		<label><input type="radio" name="type" value="@type.Id" />@type.Name</label>
+}
+}
+			</div>
+			<div class="form-group">
+				<label>select the item image</label>
+				<div class="imageList">
+					@foreach (var item in Model.images)
+			{
+				<div class="image">
+					@if (Model.item.imgeUrl.Equals(item))
+			{
+				<img src="~/images/item/@item" alt="list Text" />
+				<label><input type="radio" checked="checked" name="itemimg" value="@item" />@item</label>
+	}
+	else
+	{
+		<img src="~/images/item/@item" alt="list Text" />
+		<label><input type="radio" name="itemimg" value="@item" />@item</label>
+}
+
+				</div>
+	}
+				</div>
+			</div>
+
+
+
+
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-default" />
+			</div>
+		</form>
+	</div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+	<a asp-action="Index">Back to List</a>
 </div>
 

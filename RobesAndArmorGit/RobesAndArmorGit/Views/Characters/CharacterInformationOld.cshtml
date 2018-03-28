@@ -1,0 +1,75 @@
+﻿@model GameData.Models.Character
+
+@{
+    ViewData["Title"] = "CharacterInformation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CharacterInformation</h2>
+
+<div>
+    <h4>Character</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.imageUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.imageUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Exp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Exp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.str)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.str)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Agility)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Agility)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.INT)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.INT)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.gold)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.gold)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Class)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Class.Id)
+        </dd>
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

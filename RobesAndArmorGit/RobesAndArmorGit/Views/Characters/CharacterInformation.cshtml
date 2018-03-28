@@ -1,11 +1,121 @@
 ﻿@model GameData.Models.Character
 
 @{
-    ViewData["Title"] = "CharacterInformation";
+    ViewData["Title"] = "CharacterInfo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CharacterInformation</h2>
+<h2>CharacterInfo</h2>
+<div class="CharacterShow">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="statPanel">
+                    <div class="Meters">
+                        <label>Health:</label>
+                        <meter class="healthMeter" value="0.6">60%</meter>
+                    </div>
+                    <div class="Meters">
+                        <label>Exp:</label>
+                        <meter class="expMeter" value="0.6">60%</meter>
+                    </div>
+
+                    <div class="stat">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Name)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Level)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Level)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Exp)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Exp)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.str)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.str)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Agility)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Agility)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.INT)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.INT)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.gold)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.gold)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Class)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Class.Id)
+                            </dd>
+
+                        </dl>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+                <div class="equipmentPanel">
+                    <div class="panelSlots">
+                        <div class="slot head">
+
+                        </div>
+                        <div class="slot body">
+
+                        </div>
+                        <div class="slot legs">
+
+                        </div>
+                        <div class="slot feet">
+
+                        </div>
+                        <div class="slot glove">
+
+                        </div>
+                        <div class="slot weapon">
+                            <img src="~/images/item/icon_axe1.png" alt="Alternate Text" /> 
+                        </div>
+                        <div class="slot shield">
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 <div>
     <h4>Character</h4>
@@ -59,14 +169,24 @@
         <dd>
             @Html.DisplayFor(model => model.gold)
         </dd>
-        
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserID)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Class)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Class.Id)
         </dd>
-        
+        <dt>
+            @Html.DisplayNameFor(model => model.inventory)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.inventory.Id)
+        </dd>
     </dl>
 </div>
 <div>

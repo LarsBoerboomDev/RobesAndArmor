@@ -36,24 +36,39 @@
                 <span asp-validation-for="item.Atk" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="item.Health" class="control-label"></label>
+                <input asp-for="item.Health" name="health" class="form-control" />
+                <span asp-validation-for="item.Health" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="item.Description" class="control-label"></label>
                 <textarea asp-for="item.Description" name="description" class="form-control"></textarea>
                 <span asp-validation-for="item.Description" class="text-danger"></span>
             </div>
-            @foreach (var Img in Model.type)
-            {
-               <label><input type="radio" name="type" value="@Img.Name" />@Img.Name</label>
-            }
-            <div class="imgList">
-                @foreach (var Img in Model.images)
+            <div class="form-group">
+                <label>Select the item type: </label>
+                @foreach (var Img in Model.type)
         {
-            <div class="image">
-                <img src="~/images/item/@Img" />
-                <label><input type="radio" name="itemimg" value="@Img" />@Img</label>
-            </div>
-
+            <label><input type="radio" name="type" value="@Img.Id" />@Img.Name</label>
 }
             </div>
+
+
+            <div class="form-group">
+                <label>Select the item Image</label>
+                <div class="imageList">
+                    @foreach (var Img in Model.images)
+            {
+                <div class="image">
+                    <img class="listImage" src="~/images/item/@Img" />
+                    <label><input type="radio" name="itemimg" value="@Img" />@Img</label>
+                </div>
+
+    }
+                </div>
+
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>

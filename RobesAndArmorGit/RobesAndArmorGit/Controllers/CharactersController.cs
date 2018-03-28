@@ -131,6 +131,7 @@ namespace RobesAndArmorGit.Controllers
             newcharacter.Level = 1;
             newcharacter.Exp = 0;
             newcharacter.UserID = id;
+            newcharacter.Health = 100;
             newcharacter.str = CharacterClass.Str;
             newcharacter.Agility = CharacterClass.Agility;
             newcharacter.INT = CharacterClass.Int;

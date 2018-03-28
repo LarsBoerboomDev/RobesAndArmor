@@ -49,7 +49,11 @@ namespace RobesAndArmorGit.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
-            return View();
+            Models.ViewModels.classesCreate classesCreate = new Models.ViewModels.classesCreate();
+            classesCreate.images = Logic.getImages.gettheImages("classimg");
+            classesCreate.charClass = new Class();
+
+            return View(classesCreate);
         }
 
         // POST: Classes/Create
@@ -58,10 +62,19 @@ namespace RobesAndArmorGit.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Str,Agility,Int")] Class @class)
+        //public async Task<IActionResult> Create([Bind("Id,Name,Str,Agility,Int")] Class @class)
+          public async Task<IActionResult> Create(string Name, string Str, string Agility, string Int, string classimg)
         {
+            GameData.Models.Class @class = new Class();
+            @class.Name = Name;
+            @class.Str = Convert.ToInt32(Str);
+            @class.Agility = Convert.ToInt32(Agility);
+            @class.Int = Convert.ToInt32(Int);
+            @class.imageUrl = classimg;
+
             if (ModelState.IsValid)
             {
+                
                 _context.Add(@class);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -73,17 +86,27 @@ namespace RobesAndArmorGit.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
+
+            
+
             if (id == null)
             {
                 return NotFound();
             }
+            Models.ViewModels.classesCreate classesCreate = new Models.ViewModels.classesCreate();
+            classesCreate.charClass = await _context.Classes.SingleOrDefaultAsync(m => m.Id == id);
+            if(classesCreate.charClass.imageUrl == null)
+            {
+                classesCreate.charClass.imageUrl = "";
+            }
+            classesCreate.images = Logic.getImages.gettheImages("classimg");
+            
 
-            var @class = await _context.Classes.SingleOrDefaultAsync(m => m.Id == id);
-            if (@class == null)
+            if (classesCreate.charClass == null)
             {
                 return NotFound();
             }
-            return View(@class);
+            return View(classesCreate);
         }
 
         // POST: Classes/Edit/5
@@ -92,7 +115,8 @@ namespace RobesAndArmorGit.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Str,Agility,Int")] Class @class)
+        //public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Str,Agility,Int")] Class @class)
+        public async Task<IActionResult> Edit(int id,string classimg , Class @class)
         {
             if (id != @class.Id)
             {
@@ -101,6 +125,7 @@ namespace RobesAndArmorGit.Controllers
 
             if (ModelState.IsValid)
             {
+                @class.imageUrl = classimg;
                 try
                 {
                     _context.Update(@class);

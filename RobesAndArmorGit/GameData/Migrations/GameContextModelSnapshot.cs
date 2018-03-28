@@ -29,7 +29,11 @@ namespace GameData.Migrations
 
                     b.Property<int>("ClassId");
 
+                    b.Property<int>("EquipmentId");
+
                     b.Property<int>("Exp");
+
+                    b.Property<int>("Health");
 
                     b.Property<int>("INT");
 
@@ -50,6 +54,8 @@ namespace GameData.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClassId");
+
+                    b.HasIndex("EquipmentId");
 
                     b.HasIndex("InventoryId");
 
@@ -111,6 +117,58 @@ namespace GameData.Migrations
                     b.ToTable("Enemy_has_Item");
                 });
 
+            modelBuilder.Entity("GameData.Models.Equipment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("bodyId");
+
+                    b.Property<int?>("bodyItemId");
+
+                    b.Property<int>("feetId");
+
+                    b.Property<int?>("feetItemId");
+
+                    b.Property<int>("gloveId");
+
+                    b.Property<int?>("gloveItemId");
+
+                    b.Property<int>("headId");
+
+                    b.Property<int?>("headItemId");
+
+                    b.Property<int>("legsId");
+
+                    b.Property<int?>("legsItemId");
+
+                    b.Property<int>("shieldId");
+
+                    b.Property<int?>("shieldItemId");
+
+                    b.Property<int>("weaponId");
+
+                    b.Property<int?>("weaponItemId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("bodyItemId");
+
+                    b.HasIndex("feetItemId");
+
+                    b.HasIndex("gloveItemId");
+
+                    b.HasIndex("headItemId");
+
+                    b.HasIndex("legsItemId");
+
+                    b.HasIndex("shieldItemId");
+
+                    b.HasIndex("weaponItemId");
+
+                    b.ToTable("Equipment");
+                });
+
             modelBuilder.Entity("GameData.Models.Inventory", b =>
                 {
                     b.Property<int>("Id")
@@ -146,6 +204,8 @@ namespace GameData.Migrations
                     b.Property<int>("Def");
 
                     b.Property<string>("Description");
+
+                    b.Property<int>("Health");
 
                     b.Property<int>("Level");
 
@@ -199,6 +259,11 @@ namespace GameData.Migrations
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("GameData.Models.Equipment", "Equipment")
+                        .WithMany()
+                        .HasForeignKey("EquipmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("GameData.Models.Inventory", "inventory")
                         .WithMany()
                         .HasForeignKey("InventoryId")
@@ -216,6 +281,37 @@ namespace GameData.Migrations
                         .WithMany()
                         .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GameData.Models.Equipment", b =>
+                {
+                    b.HasOne("GameData.Models.Item", "bodyItem")
+                        .WithMany()
+                        .HasForeignKey("bodyItemId");
+
+                    b.HasOne("GameData.Models.Item", "feetItem")
+                        .WithMany()
+                        .HasForeignKey("feetItemId");
+
+                    b.HasOne("GameData.Models.Item", "gloveItem")
+                        .WithMany()
+                        .HasForeignKey("gloveItemId");
+
+                    b.HasOne("GameData.Models.Item", "headItem")
+                        .WithMany()
+                        .HasForeignKey("headItemId");
+
+                    b.HasOne("GameData.Models.Item", "legsItem")
+                        .WithMany()
+                        .HasForeignKey("legsItemId");
+
+                    b.HasOne("GameData.Models.Item", "shieldItem")
+                        .WithMany()
+                        .HasForeignKey("shieldItemId");
+
+                    b.HasOne("GameData.Models.Item", "weaponItem")
+                        .WithMany()
+                        .HasForeignKey("weaponItemId");
                 });
 
             modelBuilder.Entity("GameData.Models.Inventory_has_Item", b =>

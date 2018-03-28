@@ -66,15 +66,16 @@ namespace RobesAndArmorGit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> create(string name,string def,string atk, string description, string itemimg,string level)
-        //public async Task<IActionResult> Create([Bind("Id,Name,Def,Atk")] Item item)
-        
+        public async Task<IActionResult> create(string name,string def,string atk, string description, string itemimg,string level,string health, string type)
+        //public async Task<IActionResult> Create([Bind("Id,Name,Def,Atk")] Item item)        
         {
             GameData.Models.Item item = new Item();
             item.Atk = Convert.ToInt32(atk);
             item.Def = Convert.ToInt32(def);
             item.Level = Convert.ToInt32( level);
             item.Name = name;
+            item.typeId = Convert.ToInt32(type);
+            item.Health = Convert.ToInt32(health);
             item.imgeUrl = itemimg;
 
             if (ModelState.IsValid)
@@ -86,11 +87,17 @@ namespace RobesAndArmorGit.Controllers
             return View(item);
         }
         
-
-
         // GET: Items/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
+            Models.ViewModels.itemEdit itemEdit = new Models.ViewModels.itemEdit();
+            itemEdit.item = await _context.Items.SingleOrDefaultAsync(m => m.Id == id);
+            itemEdit.images = Logic.getImages.gettheImages("item");
+            itemEdit.type = await _context.Types.ToListAsync();
+
+            
+
             if (id == null)
             {
                 return NotFound();
@@ -101,7 +108,7 @@ namespace RobesAndArmorGit.Controllers
             {
                 return NotFound();
             }
-            return View(item);
+            return View(itemEdit);
         }
 
         // POST: Items/Edit/5
@@ -109,20 +116,26 @@ namespace RobesAndArmorGit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Def,Atk")] Item item)
+        //public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Def,Atk")] Item item)
+          public async Task<IActionResult> Edit(int id, string itemimg, string type, Item item )
         {
+            /*
             if (id != item.Id)
             {
                 return NotFound();
             }
-
+            */
             if (ModelState.IsValid)
             {
+
+                item.imgeUrl = itemimg;
+                item.typeId = Convert.ToInt32(type);
                 try
                 {
                     _context.Update(item);
                     await _context.SaveChangesAsync();
                 }
+                
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!ItemExists(item.Id))

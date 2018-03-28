@@ -12,6 +12,7 @@ namespace GameData.Models
         public string Name { get; set; }
         public string imageUrl { get; set; }
         public int Level { get; set; }
+        public int Health { get; set; }
         public int Exp { get; set; }
         public int str { get; set; }
         public int Agility { get; set; }
@@ -24,9 +25,13 @@ namespace GameData.Models
 
         public int InventoryId { get; set; }
         public Models.Inventory inventory { get; set; }
-        
-        
-                
+
+        public int EquipmentId { get; set; }
+        public Models.Equipment Equipment { get; set; }
+
+
+
+
 
     }
 }

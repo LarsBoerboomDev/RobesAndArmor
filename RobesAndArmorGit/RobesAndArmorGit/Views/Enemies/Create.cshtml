@@ -16,33 +16,53 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Enemy.Name" class="control-label"></label>
-                <input asp-for="Enemy.Name" class="form-control" />
+                <input asp-for="Enemy.Name" name="name" class="form-control" />
                 <span asp-validation-for="Enemy.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Enemy.Level" class="control-label"></label>
-                <input asp-for="Enemy.Level" class="form-control" />
+                <input asp-for="Enemy.Level"name="level" class="form-control" />
                 <span asp-validation-for="Enemy.Level" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Enemy.Atk" class="control-label"></label>
-                <input asp-for="Enemy.Atk" class="form-control" />
+                <input asp-for="Enemy.Atk" name="atk" class="form-control" />
                 <span asp-validation-for="Enemy.Atk" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Enemy.Def" class="control-label"></label>
-                <input asp-for="Enemy.Def" class="form-control" />
+                <input asp-for="Enemy.Def" name="def" class="form-control" />
                 <span asp-validation-for="Enemy.Def" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Enemy.Health" class="control-label"></label>
-                <input asp-for="Enemy.Health" class="form-control" />
+                <input asp-for="Enemy.Health" name="health" class="form-control" />
                 <span asp-validation-for="Enemy.Health" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Enemy.imageUrl" class="control-label"></label>
-                <input asp-for="Enemy.imageUrl" class="form-control" />
-                <span asp-validation-for="Enemy.imageUrl" class="text-danger"></span>
+                <label>Select the enemy image</label>
+                <div class="imageList">
+                    @foreach (var item in Model.enemyImages)
+                    {
+                        <div class="image">
+                            <img class="listImage" src="~/images/Enemy/@item" />
+                            <label><input type="radio" name="enemyImage" value="@item" />@item</label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <label>select the enemy drops</label>
+                <div class="imageList">
+                    @foreach(var item in Model.AllItems)
+                    {
+                        <div class="image">
+                            <img class="listImage" src="~/images/item/@item.imgeUrl" />
+                            <label><input type="checkbox" name="drops" value="@item.Id" />@item.Name</label>
+                        </div>
+
+                    }
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
