@@ -1,4 +1,4 @@
-﻿@model GameData.Models.Character
+﻿@model RobesAndArmorGit.Models.ViewModels.viewCharacter
 
 @{
     ViewData["Title"] = "CharacterInfo";
@@ -11,6 +11,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="statPanel">
+                    <img src="~/images/faces/@Model.character.imageUrl" />
                     <div class="Meters">
                         <label>Health:</label>
                         <meter class="healthMeter" value="0.6">60%</meter>
@@ -23,54 +24,54 @@
                     <div class="stat">
                         <dl class="dl-horizontal">
                             <dt>
-                                @Html.DisplayNameFor(model => model.Name)
+                                @Html.DisplayNameFor(model => model.character.Name)
                             </dt>
                             <dd>
-                                @Html.DisplayFor(model => model.Name)
+                                @Html.DisplayFor(model => model.character.Name)
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.Level)
+                                @Html.DisplayNameFor(model => model.character.Level)
                             </dt>
                             <dd>
-                                @Html.DisplayFor(model => model.Level)
+                                @Html.DisplayFor(model => model.character.Level)
                             </dd>
                             <dt>
-                                @Html.DisplayNameFor(model => model.Exp)
+                                @Html.DisplayNameFor(model => model.character.Exp)
                             </dt>
                             <dd>
-                                @Html.DisplayFor(model => model.Exp)
+                                @Html.DisplayFor(model => model.character.Exp)
                             </dd>
                             <dt>
-                                @Html.DisplayNameFor(model => model.str)
+                                @Html.DisplayNameFor(model => model.character.str)
                             </dt>
                             <dd>
-                                @Html.DisplayFor(model => model.str)
+                                @Html.DisplayFor(model => model.character.str)
                             </dd>
                             <dt>
-                                @Html.DisplayNameFor(model => model.Agility)
+                                @Html.DisplayNameFor(model => model.character.Agility)
                             </dt>
                             <dd>
-                                @Html.DisplayFor(model => model.Agility)
+                                @Html.DisplayFor(model => model.character.Agility)
                             </dd>
                             <dt>
-                                @Html.DisplayNameFor(model => model.INT)
+                                @Html.DisplayNameFor(model => model.character.INT)
                             </dt>
                             <dd>
-                                @Html.DisplayFor(model => model.INT)
+                                @Html.DisplayFor(model => model.character.INT)
                             </dd>
                             <dt>
-                                @Html.DisplayNameFor(model => model.gold)
+                                @Html.DisplayNameFor(model => model.character.gold)
                             </dt>
                             <dd>
-                                @Html.DisplayFor(model => model.gold)
+                                @Html.DisplayFor(model => model.character.gold)
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.Class)
+                                @Html.DisplayNameFor(model => model.character.Class)
                             </dt>
                             <dd>
-                                @Html.DisplayFor(model => model.Class.Id)
+                                @Html.DisplayFor(model => model.character.ClassId)
                             </dd>
 
                         </dl>
@@ -84,112 +85,92 @@
             </div>
             <div class="col-md-4">
                 <div class="equipmentPanel">
-                    <div class="panelSlots">
-                        <div class="slot head">
 
-                        </div>
-                        <div class="slot body">
 
-                        </div>
-                        <div class="slot legs">
+                    <button class="btn btn-dark toggleButton" data-toggle="collapse" data-target="#equipment">show Equipment</button>
+                    <div id="equipment">
+                        <div class="panelSlots">
+                            <div class="slot head">
 
-                        </div>
-                        <div class="slot feet">
+                            </div>
+                            <div class="slot body">
 
-                        </div>
-                        <div class="slot glove">
+                            </div>
+                            <div class="slot legs">
 
-                        </div>
-                        <div class="slot weapon">
-                            <img src="~/images/item/icon_axe1.png" alt="Alternate Text" /> 
-                        </div>
-                        <div class="slot shield">
+                            </div>
+                            <div class="slot feet">
 
+                            </div>
+                            <div class="slot glove">
+
+                            </div>
+                            <div class="slot weapon">
+                                <img src="~/images/item/icon_axe1.png" alt="Alternate Text" />
+                            </div>
+                            <div class="slot shield">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="btn btn-dark toggleButton" data-toggle="collapse" data-target="#inventory">show Inventory</button>
+                    <div id="inventory" class="collapse">
+                        <div class="InventoryPanel">
+                            @foreach (var item in Model.items)
+                            {
+                                <div class="slot2">
+                                    <img src="~/images/item/@item.imgeUrl" />
+                                    <div class="myDropdown">
+                                        <div class="dropdownItem">
+                                            <p>Name: @item.Name</p>
+                                            <p>Attack: @item.Atk</p>
+                                            <p>Defence: @item.Def</p>
+                                            <p>Price: @item.price</p>
+                                            <a asp-action="sell" asp-route-id="@item.Id">Sell</a>
+                                            <a asp-action="equip" asp-route-id="@item.Id">Equip</a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            }
+                            @for (int i = 0; i < Model.inventorySize; i++)
+                            {
+                                <div class="slot2">
+
+                                </div>
+                            }
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+    $(".slot2").click(function () {
+        var dropdown = document.getElementsByClassName("myDropdown");
+        console.log(dropdown);
+        for (var i = 0; i < dropdown.length; i++) {
+            dropdown[i].classList.remove("show");            
+        }
+
+        this.classList.toggle("show");
+        var classes = this.getElementsByClassName("myDropdown");
+        if (classes.length == 0) {
+
+
+        } else {
+            classes[0].classList.toggle("show");
+
+        }
+        console.log(classes[0]);
+        
+    })
+</script>
 
 
 
-<div>
-    <h4>Character</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.imageUrl)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.imageUrl)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Level)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Level)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Exp)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Exp)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.str)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.str)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Agility)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Agility)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.INT)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.INT)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.gold)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.gold)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UserID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UserID)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Class)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Class.Id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.inventory)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.inventory.Id)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>

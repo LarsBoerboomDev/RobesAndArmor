@@ -11,9 +11,10 @@ using System;
 namespace GameData.Migrations
 {
     [DbContext(typeof(GameContext))]
-    partial class GameContextModelSnapshot : ModelSnapshot
+    [Migration("20180403093559_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,11 +212,7 @@ namespace GameData.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("Rarity");
-
                     b.Property<string>("imgeUrl");
-
-                    b.Property<int>("price");
 
                     b.Property<int>("typeId");
 

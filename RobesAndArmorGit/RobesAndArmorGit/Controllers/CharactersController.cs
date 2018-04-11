@@ -61,15 +61,40 @@ namespace RobesAndArmorGit.Controllers
 
         public async Task<IActionResult> CharacterInformation()
         {
+            Models.ViewModels.viewCharacter viewCharacter = new Models.ViewModels.viewCharacter();
             ApplicationUser usr = await GetCurrentUserAsync();
-            var character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.Id);
-            Character Char = new Character();
-            Char = character;
-            return View(Char);
+            viewCharacter.character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.UserName);
+            viewCharacter.inventory = await _context.Inventories.SingleOrDefaultAsync(m => m.Id == viewCharacter.character.InventoryId);
+            
+            var inventory =  _context.Inventory_has_Item.Where(m => m.InventoryId == viewCharacter.character.InventoryId).ToList();
+            viewCharacter.inventorySize = viewCharacter.inventory.Size - inventory.Count();
+            
+            viewCharacter.items = _context.Items.Where(n => n.Inventory_Has_Item.Any(m => m.InventoryId == viewCharacter.character.InventoryId)).ToList() ;
+            foreach (var item in inventory)
+            {
+                viewCharacter.items.Add(_context.Items.SingleOrDefault(m => m.Id == item.ItemId));
+            }
+                                    
+            return View(viewCharacter);
+        }
+
+        public IActionResult sell()
+        {
+            //sell the item for 1/4 of the price
+
+            return View();
+        }
+        public IActionResult equip()
+        {
+            //equip the item and unquip the already equiped item
+
+
+            return View();
         }
 
         public async Task<IActionResult> CharDetails()
         {
+            
             ApplicationUser usr = await GetCurrentUserAsync();
             var character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.Id);
             Character MyChar = character;
@@ -95,6 +120,7 @@ namespace RobesAndArmorGit.Controllers
             Models.ViewModels.CharacterRegistration viewmodel = new Models.ViewModels.CharacterRegistration();
             viewmodel.Classses = await _context.Classes.ToListAsync();
             viewmodel.Character = new GameData.Models.Character();
+            viewmodel.faceImages = Logic.getImages.gettheImages("faces");
 
 
             return View(viewmodel);
@@ -120,8 +146,12 @@ namespace RobesAndArmorGit.Controllers
             int classId = Convert.ToInt32(charClass);
             Class CharacterClass = new Class();
             CharacterClass = await _context.Classes.SingleOrDefaultAsync(m => m.Id == classId);
-            
-            
+
+
+            Equipment equipment = new Equipment();
+            _context.Add(equipment);
+            await _context.SaveChangesAsync();
+
 
 
             Character newcharacter = new Character();
@@ -137,6 +167,7 @@ namespace RobesAndArmorGit.Controllers
             newcharacter.INT = CharacterClass.Int;
             newcharacter.Class = CharacterClass;
             newcharacter.inventory = inventory;
+            newcharacter.Equipment = equipment;
             
             
 

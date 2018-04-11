@@ -2,7 +2,7 @@
 
 @{
 	ViewData["Title"] = "Edit";
-	Layout = "~/Views/Admin/AdminLayout.cshtml";
+	Layout = "~/Views/Admin/AdminLayout.cshtml";    
 }
 
 <h2>Edit</h2>
@@ -44,6 +44,12 @@
 				<textarea asp-for="item.Description" class="form-control"></textarea>
 				<span asp-validation-for="item.Description" class="text-danger"></span>
 			</div>
+			<div class="form-group">
+				<label asp-for="item.price" class="control-label"></label>
+				<input asp-for="item.price" class="form-control" />
+				<span asp-validation-for="item.price" class="text-danger"></span>
+			</div>
+
 			<div class="form-group">
 				<label>Select the item type: </label>
 				@foreach (var type in Model.type)

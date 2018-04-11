@@ -43,7 +43,7 @@ namespace RobesAndArmorGit.Controllers
                 return NotFound();
             }
 
-            var news = await _context.theNews
+            var news = await _context.theNews 
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (news == null)
             {

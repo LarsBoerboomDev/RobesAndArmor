@@ -66,7 +66,7 @@ namespace RobesAndArmorGit.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> create(string name,string def,string atk, string description, string itemimg,string level,string health, string type)
+        public async Task<IActionResult> create(string name,string def,string atk, string description, string itemimg,string level,string health, string type, string price)
         //public async Task<IActionResult> Create([Bind("Id,Name,Def,Atk")] Item item)        
         {
             GameData.Models.Item item = new Item();
@@ -76,6 +76,7 @@ namespace RobesAndArmorGit.Controllers
             item.Name = name;
             item.typeId = Convert.ToInt32(type);
             item.Health = Convert.ToInt32(health);
+            item.price = Convert.ToInt32(price);
             item.imgeUrl = itemimg;
 
             if (ModelState.IsValid)

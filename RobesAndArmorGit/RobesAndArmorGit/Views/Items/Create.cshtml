@@ -46,6 +46,11 @@
                 <span asp-validation-for="item.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="item.price" class="control-label"> </label>
+                <input asp-for="item.price" name="price" class="form-control" />
+                <span asp-validation-for="item.price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label>Select the item type: </label>
                 @foreach (var Img in Model.type)
         {

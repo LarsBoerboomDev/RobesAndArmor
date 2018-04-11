@@ -16,7 +16,10 @@ namespace GameData.Models
         public int Def { get; set; }
         public int Atk { get; set; }       
         public string imgeUrl { get; set; }
-        
+        public string Rarity { get; set; }
+        public int price { get; set; }
+
+
         public int typeId { get; set; }
         public Type Type { get; set; }
 

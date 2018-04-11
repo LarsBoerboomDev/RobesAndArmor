@@ -1,4 +1,4 @@
-﻿body {
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -117,18 +117,33 @@ Character information page
 .equipmentPanel{
     height: 500px;
     width: 300px;
+    overflow-x: auto;
     background-image:url('../images/papertexture.jpg');
     background-repeat: repeat;     
 }
-.panelSlots{
-    padding-top: 75px;
-
+.panelSlots{    
+    height: 290px;
+}
+.toggleButton{
+    width: 100%;
 }
 .slot{
     height: 65px;
     width: 65px;
     border-style: solid;
     border-width: 2px;    
+}
+.slot2{
+    height: 65px;
+    width: 65px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-width: 2px;    
+    float: left;
+}
+.slot2 img{
+    width: 55px;
 }
 .slot img{
     width: 55px;
@@ -159,4 +174,23 @@ Character information page
 .shield{
     margin-left: 55px;
     margin-top: 5px;
+}
+.shop{
+
+}
+.Shopitem{
+    
+}
+.myDropdown{
+    display: none;
+}
+.show {display:block;}
+.dropdown-content{
+    display: none;
+}
+.dropdownItem{
+    height: 150px;
+    width: 100px;
+    position: relative;
+    background-color: grey;
 }

@@ -87,11 +87,11 @@ namespace RobesAndArmorGit.Controllers
             return View(inventory);
         }
 
-        [Authorize(Roles = "Admin, User" )]
+        [Authorize(Roles = "Admin, User, Player" )]
         public async Task<IActionResult> CharacterItems()
         {
             ApplicationUser usr = await GetCurrentUserAsync();
-            Character Character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.Id);
+            Character Character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.UserName);
             Models.ViewModels.InventoryItems inventory = new Models.ViewModels.InventoryItems();            
             inventory.Inventory = await _context.Inventories.SingleOrDefaultAsync(m => m.Id == Character.InventoryId);            
             inventory.Items = _context.Items.Where(emp => emp.Inventory_Has_Item.Any(r => r.InventoryId == Character.InventoryId)).ToList();
