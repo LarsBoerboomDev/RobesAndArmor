@@ -78,11 +78,34 @@ namespace RobesAndArmorGit.Controllers
             return View(viewCharacter);
         }
 
-        public IActionResult sell()
+        public async Task<IActionResult> sell(int? id)
         {
             //sell the item for 1/4 of the price
+            ApplicationUser usr = await GetCurrentUserAsync();
+            Character character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.UserName);
+            Item item = await _context.Items.SingleOrDefaultAsync(m => m.Id == id);
 
-            return View();
+            List<Inventory_has_Item> inventoryList = _context.Inventory_has_Item.Where(m => m.InventoryId == character.InventoryId && m.ItemId == id).ToList();
+            for (int i = 0; i < inventoryList.Count; i++)
+            {
+                if(i == 0)
+                {
+                    //picks the first item from the list and deletes it from the user inventory and adds the new funds for the character
+                    Console.WriteLine(inventoryList[0].ItemId);
+                     _context.Inventory_has_Item.Remove(inventoryList[0]);
+                    await _context.SaveChangesAsync();
+
+                    character.gold = character.gold + item.price / 4;
+                    _context.Update(character);
+                    await _context.SaveChangesAsync();
+
+                }
+            }
+
+
+
+
+            return RedirectToAction("CharacterInformation", "Characters");
         }
         public IActionResult equip()
         {
