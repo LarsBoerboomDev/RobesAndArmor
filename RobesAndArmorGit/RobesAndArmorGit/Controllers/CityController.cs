@@ -46,23 +46,42 @@ namespace RobesAndArmorGit.Controllers
             var inventory = _context.Inventories.SingleOrDefault(m => m.Id == character.InventoryId);
             var item = _context.Items.SingleOrDefault(m => m.Id == id);
 
+            GameData.Models.Inventory_has_Item invItem = _context.Inventory_has_Item.Where(m => m.InventoryId == character.InventoryId).Where(m => m.ItemId == id).Single();
+
+            if(invItem.InventoryId == 0)
+            {
+                // make new
+                GameData.Models.Inventory_has_Item invItems = new GameData.Models.Inventory_has_Item();
+                invItems.Inventory = inventory;
+                invItems.ItemId = Convert.ToInt32(id);
+                invItems.Count = 0;
+                _context.Add(invItems);
+                await _context.SaveChangesAsync();
+
+            }
+            else
+            {
+                //Update count
+                invItem.Count = invItem.Count + 1;
+                _context.Update(invItem);
+                await _context.SaveChangesAsync();                
+
+            }
+
+            /*
             GameData.Models.Inventory_has_Item invItems = new GameData.Models.Inventory_has_Item();
             invItems.Inventory = inventory;
             invItems.ItemId = Convert.ToInt32(id);
+            invItems.Count = invItems.Count + 1;
             _context.Add(invItems);
             await _context.SaveChangesAsync();
-
+            */
 
             character.gold = character.gold - item.price;
             _context.Update(character);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("shop", "City");
-
-
-
-            
-        }
-        
+            return RedirectToAction("shop", "City");            
+        }        
     }
 }

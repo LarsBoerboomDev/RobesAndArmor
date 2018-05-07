@@ -110,7 +110,11 @@ namespace GameData.Migrations
 
                     b.Property<int>("ItemId");
 
+                    b.Property<int>("Id");
+
                     b.HasKey("EnemyId", "ItemId");
+
+                    b.HasAlternateKey("Id");
 
                     b.HasIndex("ItemId");
 
@@ -186,6 +190,8 @@ namespace GameData.Migrations
                     b.Property<int>("InventoryId");
 
                     b.Property<int>("ItemId");
+
+                    b.Property<int>("Count");
 
                     b.HasKey("InventoryId", "ItemId");
 

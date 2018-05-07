@@ -11,8 +11,8 @@ using System;
 namespace GameData.Migrations
 {
     [DbContext(typeof(GameContext))]
-    [Migration("20180404094451_ItemRarity")]
-    partial class ItemRarity
+    [Migration("20180507094847_3")]
+    partial class _3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,7 +111,11 @@ namespace GameData.Migrations
 
                     b.Property<int>("ItemId");
 
+                    b.Property<int>("Id");
+
                     b.HasKey("EnemyId", "ItemId");
+
+                    b.HasAlternateKey("Id");
 
                     b.HasIndex("ItemId");
 
@@ -188,6 +192,8 @@ namespace GameData.Migrations
 
                     b.Property<int>("ItemId");
 
+                    b.Property<int>("Count");
+
                     b.HasKey("InventoryId", "ItemId");
 
                     b.HasIndex("ItemId");
@@ -215,6 +221,8 @@ namespace GameData.Migrations
                     b.Property<string>("Rarity");
 
                     b.Property<string>("imgeUrl");
+
+                    b.Property<int>("price");
 
                     b.Property<int>("typeId");
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace GameData.Models
@@ -9,6 +10,11 @@ namespace GameData.Models
         /// <summary>
         /// many to many table with Item and Enemy
         /// </summary>
+        /// 
+
+        [Key]
+        public int Id { get; set;  } 
+
         public int ItemId { get; set; }
         public Item Item { get; set; }
 

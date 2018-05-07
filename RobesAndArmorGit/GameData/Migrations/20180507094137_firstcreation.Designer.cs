@@ -11,8 +11,8 @@ using System;
 namespace GameData.Migrations
 {
     [DbContext(typeof(GameContext))]
-    [Migration("20180405113806_itemPriceAdded")]
-    partial class itemPriceAdded
+    [Migration("20180507094137_firstcreation")]
+    partial class firstcreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -111,7 +111,11 @@ namespace GameData.Migrations
 
                     b.Property<int>("ItemId");
 
+                    b.Property<int>("Id");
+
                     b.HasKey("EnemyId", "ItemId");
+
+                    b.HasAlternateKey("Id");
 
                     b.HasIndex("ItemId");
 
@@ -188,7 +192,11 @@ namespace GameData.Migrations
 
                     b.Property<int>("ItemId");
 
+                    b.Property<int>("Id");
+
                     b.HasKey("InventoryId", "ItemId");
+
+                    b.HasAlternateKey("Id");
 
                     b.HasIndex("ItemId");
 

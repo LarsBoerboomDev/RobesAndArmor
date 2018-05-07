@@ -22,7 +22,7 @@ namespace GameData
 
     
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        {            
             modelBuilder.Entity<Inventory_has_Item>()
                 .HasKey(t => new { t.InventoryId, t.ItemId });
 
