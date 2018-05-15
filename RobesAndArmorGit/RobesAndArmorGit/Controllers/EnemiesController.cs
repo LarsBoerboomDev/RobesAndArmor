@@ -9,16 +9,19 @@ using GameData;
 using GameData.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.IO;
+using TheLogic;
 
 namespace RobesAndArmorGit.Controllers
 {
     public class EnemiesController : Controller
     {
         private readonly GameContext _context;
+        TheLogic.Enemies _enemies;
 
         public EnemiesController(GameContext context)
         {
             _context = context;
+            _enemies = new Enemies(_context);
         }
 
         // GET: Enemies
@@ -84,11 +87,18 @@ namespace RobesAndArmorGit.Controllers
             enemy.Def = Convert.ToInt32(def);
             enemy.Health = Convert.ToInt32(health);
             enemy.imageUrl = enemyImage;
+
+            
+            
+
             _context.Add(enemy);
             await _context.SaveChangesAsync();
-
+             
 
             GameData.Models.Enemy_has_Item enemyItem = new Enemy_has_Item();
+            //_enemies.create(enemy, enemyItem, drops);
+             
+
             foreach (string item in drops)
             {
                 enemyItem.Enemy = enemy;
@@ -98,8 +108,8 @@ namespace RobesAndArmorGit.Controllers
                 _context.Add(enemyItem);
                 await _context.SaveChangesAsync();
             }
-
             /*
+           
             if (ModelState.IsValid)
             {
                 _context.Add(enemy);

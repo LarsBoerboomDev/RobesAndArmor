@@ -20,11 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GameData\GameData.csproj" />
+    <Folder Include="Seeds\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Seeds\" />
+    <ProjectReference Include="..\GameData\GameData.csproj" />
+    <ProjectReference Include="..\TheLogic\TheLogic.csproj" />
   </ItemGroup>
 
 </Project>

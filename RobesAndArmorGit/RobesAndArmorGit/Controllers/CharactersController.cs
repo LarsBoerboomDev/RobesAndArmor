@@ -65,7 +65,7 @@ namespace RobesAndArmorGit.Controllers
             ApplicationUser usr = await GetCurrentUserAsync();
             viewCharacter.character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.UserName);
             viewCharacter.inventory = await _context.Inventories.SingleOrDefaultAsync(m => m.Id == viewCharacter.character.InventoryId);
-            
+            viewCharacter.equipment = await _context.Equipment.SingleOrDefaultAsync(m => m.Id == viewCharacter.character.Id);
             var inventory =  _context.Inventory_has_Item.Where(m => m.InventoryId == viewCharacter.character.InventoryId).ToList();
             viewCharacter.inventorySize = viewCharacter.inventory.Size - inventory.Count();
             
@@ -105,6 +105,26 @@ namespace RobesAndArmorGit.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("CharacterInformation", "Characters");
         }
+
+        public async Task<IActionResult>equip(int? id)
+        {
+            //equips the item
+
+
+            ApplicationUser usr = await GetCurrentUserAsync();
+            Character character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.UserName);
+            Equipment equipment = await _context.Equipment.SingleOrDefaultAsync(m => m.Id == character.EquipmentId);
+            Item item = await _context.Items.SingleOrDefaultAsync(m => m.Id == id);
+            equipment = Logic.Equiping.CheckType(item, equipment);
+
+
+            _context.Update(equipment);
+            await _context.SaveChangesAsync();
+
+
+            return RedirectToAction("CharacterInformation", "Characters");
+        }
+
 
         public async Task<IActionResult> sell2(int? id)
         {

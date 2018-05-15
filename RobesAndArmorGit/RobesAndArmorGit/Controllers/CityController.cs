@@ -46,9 +46,9 @@ namespace RobesAndArmorGit.Controllers
             var inventory = _context.Inventories.SingleOrDefault(m => m.Id == character.InventoryId);
             var item = _context.Items.SingleOrDefault(m => m.Id == id);
 
-            GameData.Models.Inventory_has_Item invItem = _context.Inventory_has_Item.Where(m => m.InventoryId == character.InventoryId).Where(m => m.ItemId == id).Single();
+            GameData.Models.Inventory_has_Item invItem = _context.Inventory_has_Item.Where(m => m.InventoryId == character.InventoryId).Where(m => m.ItemId == id).FirstOrDefault();
 
-            if(invItem.InventoryId == 0)
+            if(invItem == null)
             {
                 // make new
                 GameData.Models.Inventory_has_Item invItems = new GameData.Models.Inventory_has_Item();

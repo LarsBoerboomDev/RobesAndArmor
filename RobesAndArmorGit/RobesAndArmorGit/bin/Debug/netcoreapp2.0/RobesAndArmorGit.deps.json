@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "e531c305d00baddce899010831a73f4f436ee99a"
+    "signature": "a8e6d1d4871d4d422b1c2c570aa240888e31ab5e"
   },
   "compilationOptions": {
     "defines": [
@@ -28,13 +28,24 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.1",
           "Microsoft.NETCore.App": "2.0.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.2"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.2",
+          "TheLogic": "1.0.0"
         },
         "runtime": {
           "RobesAndArmorGit.dll": {}
         },
         "compile": {
           "RobesAndArmorGit.dll": {}
+        }
+      },
+      "EntityFramework/6.2.0": {
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -4069,6 +4080,18 @@
           "GameData.dll": {}
         }
       },
+      "TheLogic/1.0.0": {
+        "dependencies": {
+          "EntityFramework": "6.2.0",
+          "GameData": "1.0.0"
+        },
+        "runtime": {
+          "TheLogic.dll": {}
+        },
+        "compile": {
+          "TheLogic.dll": {}
+        }
+      },
       "Microsoft.NETCore.App/2.0.0": {
         "dependencies": {
           "Microsoft.NETCore.DotNetHostPolicy": "2.0.0",
@@ -4252,6 +4275,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "EntityFramework/6.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ptGyXOf26qLrtn+2doAmylIlCxOnBJANwlyyLrXDmqIk9O18IzLWHyxDwwAyhgXkxmbiaA0WNpRy67WRReInBw==",
+      "path": "entityframework/6.2.0",
+      "hashPath": "entityframework.6.2.0.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",
@@ -6382,6 +6412,11 @@
       "hashPath": "windowsazure.storage.8.1.4.nupkg.sha512"
     },
     "GameData/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TheLogic/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
