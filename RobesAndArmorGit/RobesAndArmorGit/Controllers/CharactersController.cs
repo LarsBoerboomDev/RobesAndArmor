@@ -66,14 +66,15 @@ namespace RobesAndArmorGit.Controllers
             viewCharacter.character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.UserName);
             viewCharacter.inventory = await _context.Inventories.SingleOrDefaultAsync(m => m.Id == viewCharacter.character.InventoryId);
             viewCharacter.equipment = await _context.Equipment.SingleOrDefaultAsync(m => m.Id == viewCharacter.character.Id);
-            var inventory =  _context.Inventory_has_Item.Where(m => m.InventoryId == viewCharacter.character.InventoryId).ToList();
-            viewCharacter.inventorySize = viewCharacter.inventory.Size - inventory.Count();
-            
-            viewCharacter.items = _context.Items.Where(n => n.Inventory_Has_Item.Any(m => m.InventoryId == viewCharacter.character.InventoryId)).ToList() ;
-            foreach (var item in inventory)
+            viewCharacter.inventoryItems = _context.Inventory_has_Item.Where(m => m.InventoryId == viewCharacter.character.InventoryId).ToList();
+            viewCharacter.inventorySize = viewCharacter.inventory.Size - viewCharacter.inventoryItems.Count();
+                        
+            foreach(var item in viewCharacter.inventoryItems)
             {
-                viewCharacter.items.Add(_context.Items.SingleOrDefault(m => m.Id == item.ItemId));
+                item.Item = _context.Items.Where(m => m.Id == item.ItemId).First();
             }
+            
+                       
                                     
             return View(viewCharacter);
         }
@@ -109,12 +110,11 @@ namespace RobesAndArmorGit.Controllers
         public async Task<IActionResult>equip(int? id)
         {
             //equips the item
-
-
             ApplicationUser usr = await GetCurrentUserAsync();
             Character character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.UserName);
             Equipment equipment = await _context.Equipment.SingleOrDefaultAsync(m => m.Id == character.EquipmentId);
             Item item = await _context.Items.SingleOrDefaultAsync(m => m.Id == id);
+            item.Type = await _context.Types.SingleOrDefaultAsync(m => m.Id == item.typeId);
             equipment = Logic.Equiping.CheckType(item, equipment);
 
 
@@ -155,14 +155,7 @@ namespace RobesAndArmorGit.Controllers
 
             return RedirectToAction("CharacterInformation", "Characters");
         }
-        public IActionResult equip()
-        {
-            //equip the item and unquip the already equiped item
-
-
-            return View();
-        }
-
+  
         public async Task<IActionResult> CharDetails()
         {
             

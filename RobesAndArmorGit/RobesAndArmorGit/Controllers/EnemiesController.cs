@@ -28,7 +28,8 @@ namespace RobesAndArmorGit.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Enemies.ToListAsync());
+            return View(await _enemies.getAllEnemies());
+          //  return View(await _context.Enemies.ToListAsync());
         }
 
         // GET: Enemies/Details/5
@@ -46,17 +47,22 @@ namespace RobesAndArmorGit.Controllers
                 return NotFound();
             }
 
-            return View(enemy);
+            return View(await _enemies.getEnemyDetails(Convert.ToInt32(id)));
         }
 
         // GET: Enemies/Create
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create()
-        {
+        {            
             Models.ViewModels.EnemyItem enemyItem = new Models.ViewModels.EnemyItem();
 
-            enemyItem.enemyImages = Logic.getImages.gettheImages("Enemy");
+            enemyItem.enemyImages = GetImages.gettheImages("Enemy");
+            
+            
+            
             /*
+            enemyItem.enemyImages = Logic.getImages.gettheImages("Enemy");
+            
             string path = Path.Combine(Environment.CurrentDirectory, @"wwwroot\images\Enemy\");
             enemyItem.enemyImages = new List<string>();
             foreach (string item in Directory.GetFiles(path))
@@ -64,6 +70,7 @@ namespace RobesAndArmorGit.Controllers
                 enemyItem.enemyImages.Add(Path.GetFileName(item));
             }
             */
+
 
             enemyItem.AllItems = await _context.Items.ToListAsync();
             enemyItem.Type = await _context.Types.ToListAsync();

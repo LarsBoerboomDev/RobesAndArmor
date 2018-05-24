@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using GameData;
 using GameData.Models;
 using Microsoft.EntityFrameworkCore;
@@ -15,8 +16,32 @@ namespace TheLogic
 
         public Enemies(GameContext context)
         {
-            _context = context;
+             _context = context;
+       
+            
         }
+       
+        public async Task<List<GameData.Models.Enemy>> getAllEnemies()
+        {
+
+            List<GameData.Models.Enemy> enemies;
+       
+            
+            enemies = await _context.Enemies.ToListAsync();
+            return enemies;
+        }
+
+
+        public async Task<Enemy> getEnemyDetails(int id)
+        {
+            Enemy enemy = await _context.Enemies.SingleOrDefaultAsync(m => m.Id == id);
+            return enemy;
+        }
+
+        
+
+       
+
 
         public async void create(Enemy enemy, Enemy_has_Item enemyItem, List<string> drops)
         {

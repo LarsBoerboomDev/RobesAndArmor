@@ -13,5 +13,6 @@ namespace RobesAndArmorGit.Models.ViewModels
         public int inventorySize { get; set; }
         public List<Item> items { get; set; }
         public Equipment equipment { get; set; }
+        public List<Inventory_has_Item> inventoryItems { get; set; }
     }
 }

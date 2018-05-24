@@ -28,7 +28,9 @@ namespace GameData
 
             modelBuilder.Entity<Enemy_has_Item>()
                 .HasKey(t => new { t.EnemyId, t.ItemId });
+           
         }
+        
 
         /*
         public DbSet<Models.Type> types { get; set; }

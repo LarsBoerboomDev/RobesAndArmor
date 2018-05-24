@@ -15,7 +15,7 @@ namespace GameData.Models
         public Item Item { get; set; }
 
         public int InventoryId { get; set; }
-        public Inventory Inventory { get; set; }
+        public virtual Inventory Inventory { get; set; }
 
         public int Count { get; set; }
     }

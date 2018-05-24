@@ -91,7 +91,7 @@
                     <div id="equipment">
                         <div class="panelSlots">
                             <div class="slot head">
-
+                                <img src="~/images/item/@Model.equipment.headItem.imgeUrl" />
                             </div>
                             <div class="slot body">
 
@@ -117,20 +117,19 @@
                     <button class="btn btn-dark toggleButton" data-toggle="collapse" data-target="#inventory">show Inventory</button>
                     <div id="inventory" class="collapse">
                         <div class="InventoryPanel">
-                            @foreach (var item in Model.items)
+                            @foreach (var item in Model.inventoryItems)
                             {
                                 <div class="slot2">
-                                    <img src="~/images/item/@item.imgeUrl" />
+                                    <img src="~/images/item/@item.Item.imgeUrl" />
                                     <div class="myDropdown">
                                         <div class="dropdownItem">
-                                            <p>Name: @item.Name</p>
-                                            <p>Attack: @item.Atk</p>
-                                            <p>Defence: @item.Def</p>
-                                            <p>Price: @item.price</p>
-                                            <a asp-action="sell" asp-route-id="@item.Id">Sell</a>
-                                            <a asp-action="equip" asp-route-id="@item.Id">Equip</a>
-                                        </div>
-                                        
+                                            <p>Name: @item.Item.Name</p>
+                                            <p>Attack: @item.Item.Atk</p>
+                                            <p>Defence: @item.Item.Def</p>
+                                            <p>Price: @item.Item.price</p>
+                                            <a asp-action="sell" asp-route-id="@item.Item.Id">Sell</a>
+                                            <a asp-action="equip" asp-route-id="@item.Item.Id">Equip</a>
+                                        </div>                                        
                                     </div>
                                 </div>
                             }
