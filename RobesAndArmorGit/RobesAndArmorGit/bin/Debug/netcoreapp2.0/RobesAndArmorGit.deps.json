@@ -4069,6 +4069,7 @@
       },
       "GameData/1.0.0": {
         "dependencies": {
+          "EntityFramework": "6.2.0",
           "Microsoft.EntityFrameworkCore": "2.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.3",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.3"

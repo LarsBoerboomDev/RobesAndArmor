@@ -19,9 +19,17 @@ namespace GameData
         public DbSet<Inventory_has_Item> Inventory_has_Item { get; set; }
         public DbSet<Enemy_has_Item> Enemy_has_Item { get; set; }
         public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<Battle> battles { get; set; }
 
+
+        
+
+    /*
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.UseSqlServer(@"Server=(localdb)\\mssqllocaldb;Database=aspnet-RobesAndArmorGit-B77F9D65-7A58-42D0-90FE-D4EB8C98F26C;Trusted_Connection=True;MultipleActiveResultSets=true");
+    */
     
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
         {            
             modelBuilder.Entity<Inventory_has_Item>()
                 .HasKey(t => new { t.InventoryId, t.ItemId });
@@ -30,6 +38,8 @@ namespace GameData
                 .HasKey(t => new { t.EnemyId, t.ItemId });
            
         }
+
+
         
 
         /*

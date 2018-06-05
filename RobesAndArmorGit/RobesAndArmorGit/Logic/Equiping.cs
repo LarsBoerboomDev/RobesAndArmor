@@ -6,9 +6,9 @@ using GameData.Models;
 
 namespace RobesAndArmorGit.Logic
 {
-    public static class Equiping
+    public  class Equiping
     {
-        public static Equipment CheckType(Item item, Equipment equipment)
+        public  Equipment CheckType(Item item, Equipment equipment)
         {
             if (item.Type.Name == "head")
             {

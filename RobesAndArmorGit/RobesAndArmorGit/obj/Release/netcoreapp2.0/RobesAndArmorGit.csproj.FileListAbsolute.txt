@@ -1,0 +1,17 @@
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Release\netcoreapp2.0\RobesAndArmorGit.deps.json
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Release\netcoreapp2.0\RobesAndArmorGit.runtimeconfig.json
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Release\netcoreapp2.0\RobesAndArmorGit.runtimeconfig.dev.json
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Release\netcoreapp2.0\RobesAndArmorGit.dll
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Release\netcoreapp2.0\RobesAndArmorGit.pdb
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Release\netcoreapp2.0\GameData.dll
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Release\netcoreapp2.0\TheLogic.dll
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Release\netcoreapp2.0\GameData.pdb
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\bin\Release\netcoreapp2.0\TheLogic.pdb
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\RobesAndArmorGit.csprojAssemblyReference.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\RobesAndArmorGit.csproj.CoreCompileInputs.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\RobesAndArmorGit.AssemblyInfoInputs.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\RobesAndArmorGit.AssemblyInfo.cs
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\RobesAndArmorGit.csproj.CopyComplete
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\RobesAndArmorGit.dll
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\RobesAndArmorGit.pdb

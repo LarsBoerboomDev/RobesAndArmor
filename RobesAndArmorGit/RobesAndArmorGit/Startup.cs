@@ -42,9 +42,11 @@ namespace RobesAndArmorGit
 
             services.AddMvc();
 
+            
+            
             services.AddDbContext<GameContext>(options
                 => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            
 
         }
 

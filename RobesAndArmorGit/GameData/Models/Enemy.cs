@@ -12,6 +12,8 @@ namespace GameData.Models
         public int Atk { get; set; }
         public int Def { get; set; }
         public int Health { get; set; }
-        public string imageUrl { get; set; }       
+        public string imageUrl { get; set; }
+        
+
     }
 }

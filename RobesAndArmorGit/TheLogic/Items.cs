@@ -8,9 +8,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TheLogic
 {
-    class Items
+    public class Items
     {
-       
+        private readonly GameContext _context;
+
+        public Items(GameContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<List<GameData.Models.Item>> getAllItems()
+        {
+
+            
+            List<GameData.Models.Item> items;
+
+
+            items = await _context.Items.ToListAsync();
+            return items;
+        }
+
+
 
     }
 }

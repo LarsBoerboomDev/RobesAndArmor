@@ -23,7 +23,9 @@ namespace RobesAndArmorGit.Controllers
         // GET: News
         public async Task<IActionResult> Index()
         {
-            return View(await _context.theNews.ToListAsync());
+            IEnumerable<News> news = _context.Set<News>().FromSql("EXEC GetAllNews");
+            return View(news);
+            //return View(await _context.theNews.ToListAsync());
         }
 
         // GET: News/Details/5

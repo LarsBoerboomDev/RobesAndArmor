@@ -6,4 +6,4 @@ C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndAr
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\GameData\obj\Debug\netcoreapp2.0\GameData.AssemblyInfo.cs
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\GameData\obj\Debug\netcoreapp2.0\GameData.dll
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\GameData\obj\Debug\netcoreapp2.0\GameData.pdb
-C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\GameData\obj\Debug\netcoreapp2.0\GameData.csprojResolveAssemblyReference.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\GameData\obj\Debug\netcoreapp2.0\GameData.csprojAssemblyReference.cache

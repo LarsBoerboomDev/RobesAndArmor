@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="robesandarmor" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\larsb\\Documents\\Visual\ Studio\ 2017\\Projects\\RobesAndArmorGIT\\RobesAndArmorGit\\RobesAndArmorGit\\obj\\Release\\netcoreapp2\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="GameData.GameContext" description="" value="Server=tcp:robesandarmorgit20180605092723dbserver.database.windows.net,1433;Initial Catalog=robesandarmorB;Persist Security Info=False;User ID=larsboerboom;Password=Avak123qweasdzxc!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\larsb\\Documents\\Visual\ Studio\ 2017\\Projects\\RobesAndArmorGIT\\RobesAndArmorGit\\RobesAndArmorGit\\obj\\Release\\netcoreapp2\.0\\PubTmp\\EFSQLScripts\\GameData\.GameContext\.sql$" />
+  </parameter>
+  <parameter name="RobesAndArmorGit.Data.ApplicationDbContext" description="" value="Server=tcp:robesandarmorgit20180605092723dbserver.database.windows.net,1433;Initial Catalog=robesandarmorB;Persist Security Info=False;User ID=larsboerboom;Password=Avak123qweasdzxc!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\larsb\\Documents\\Visual\ Studio\ 2017\\Projects\\RobesAndArmorGIT\\RobesAndArmorGit\\RobesAndArmorGit\\obj\\Release\\netcoreapp2\.0\\PubTmp\\EFSQLScripts\\RobesAndArmorGit\.Data\.ApplicationDbContext\.sql$" />
+  </parameter>
+</parameters>

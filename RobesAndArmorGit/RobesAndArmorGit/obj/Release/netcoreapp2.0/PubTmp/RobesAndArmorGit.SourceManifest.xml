@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\PubTmp\EFSQLScripts\GameData.GameContext.sql" />
+  <dbfullsql path="C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\obj\Release\netcoreapp2.0\PubTmp\EFSQLScripts\RobesAndArmorGit.Data.ApplicationDbContext.sql" />
+</sitemanifest>

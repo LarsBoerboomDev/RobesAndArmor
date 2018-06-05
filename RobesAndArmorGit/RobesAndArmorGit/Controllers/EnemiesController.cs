@@ -22,14 +22,19 @@ namespace RobesAndArmorGit.Controllers
         {
             _context = context;
             _enemies = new Enemies(_context);
+            
         }
 
         // GET: Enemies
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
-            return View(await _enemies.getAllEnemies());
-          //  return View(await _context.Enemies.ToListAsync());
+            //return View(await _enemies.getAllEnemies());
+
+            IEnumerable<Enemy> enemy = _context.Set<Enemy>().FromSql("EXEC GetAllEnemies");
+            return View(enemy);
+
+          return View(await _context.Enemies.ToListAsync());
         }
 
         // GET: Enemies/Details/5
@@ -46,8 +51,8 @@ namespace RobesAndArmorGit.Controllers
             {
                 return NotFound();
             }
-
-            return View(await _enemies.getEnemyDetails(Convert.ToInt32(id)));
+            return View(enemy);
+            //return View(await _enemies.getEnemyDetails(Convert.ToInt32(id)));
         }
 
         // GET: Enemies/Create
@@ -57,10 +62,18 @@ namespace RobesAndArmorGit.Controllers
             Models.ViewModels.EnemyItem enemyItem = new Models.ViewModels.EnemyItem();
 
             enemyItem.enemyImages = GetImages.gettheImages("Enemy");
-            
-            
-            
+
+
             /*
+            TheLogic.Items items = new Items(_context);
+            enemyItem.AllItems = await items.getAllItems();
+
+            TheLogic.Types types = new Types(_context);
+            enemyItem.Type = await types.getAllTypes();
+            */
+
+
+            
             enemyItem.enemyImages = Logic.getImages.gettheImages("Enemy");
             
             string path = Path.Combine(Environment.CurrentDirectory, @"wwwroot\images\Enemy\");
@@ -69,11 +82,12 @@ namespace RobesAndArmorGit.Controllers
             {
                 enemyItem.enemyImages.Add(Path.GetFileName(item));
             }
-            */
+            
 
 
-            enemyItem.AllItems = await _context.Items.ToListAsync();
-            enemyItem.Type = await _context.Types.ToListAsync();
+
+            //enemyItem.AllItems = await _context.Items.ToListAsync();
+            //enemyItem.Type = await _context.Types.ToListAsync();
             enemyItem.Enemy = new Enemy();
 
             return View(enemyItem);
@@ -88,6 +102,7 @@ namespace RobesAndArmorGit.Controllers
         public async Task<IActionResult> Create(string name, string level, string atk, string def, string health, string enemyImage, List<string> drops)
         {
             GameData.Models.Enemy enemy = new Enemy();
+            
             enemy.Name = name;
             enemy.Level = Convert.ToInt32(level);
             enemy.Atk = Convert.ToInt32(atk);
@@ -95,9 +110,10 @@ namespace RobesAndArmorGit.Controllers
             enemy.Health = Convert.ToInt32(health);
             enemy.imageUrl = enemyImage;
 
-            
-            
+            Enemies enemies = new Enemies(_context);
 
+            enemies.create(enemy, drops);
+            /*
             _context.Add(enemy);
             await _context.SaveChangesAsync();
              
@@ -115,7 +131,7 @@ namespace RobesAndArmorGit.Controllers
                 _context.Add(enemyItem);
                 await _context.SaveChangesAsync();
             }
-            /*
+            
            
             if (ModelState.IsValid)
             {

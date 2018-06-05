@@ -3,7 +3,7 @@ C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndAr
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\TheLogic\bin\Debug\netcoreapp2.0\TheLogic.pdb
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\TheLogic\bin\Debug\netcoreapp2.0\GameData.dll
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\TheLogic\bin\Debug\netcoreapp2.0\GameData.pdb
-C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\TheLogic\obj\Debug\netcoreapp2.0\TheLogic.csprojResolveAssemblyReference.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\TheLogic\obj\Debug\netcoreapp2.0\TheLogic.csprojAssemblyReference.cache
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\TheLogic\obj\Debug\netcoreapp2.0\TheLogic.csproj.CoreCompileInputs.cache
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\TheLogic\obj\Debug\netcoreapp2.0\TheLogic.AssemblyInfoInputs.cache
 C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\TheLogic\obj\Debug\netcoreapp2.0\TheLogic.AssemblyInfo.cs

@@ -115,7 +115,10 @@ namespace RobesAndArmorGit.Controllers
             Equipment equipment = await _context.Equipment.SingleOrDefaultAsync(m => m.Id == character.EquipmentId);
             Item item = await _context.Items.SingleOrDefaultAsync(m => m.Id == id);
             item.Type = await _context.Types.SingleOrDefaultAsync(m => m.Id == item.typeId);
-            equipment = Logic.Equiping.CheckType(item, equipment);
+            Logic.Equiping equiping = new Logic.Equiping();
+
+
+            equipment = equiping.CheckType(item, equipment);
 
 
             _context.Update(equipment);

@@ -1,0 +1,32 @@
+﻿@model RobesAndArmorGit.Models.ViewModels.Battle 
+
+
+
+@{
+    ViewData["Title"] = "Battle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Battle</h2>
+
+
+<div class="battleScreen">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <p>@Model.character.Name</p>
+                <p>@Model.character.Health</p>
+                <p>@Model.character.str</p>
+                <a asp-action="damage" asp-route-id="@Model.battle.Id">Attack</a>
+            </div>
+            <div class="col-md-8">
+                <p>@Model.enemy.Name</p>
+                <p>@Model.enemy.Atk</p>
+                <p>@Model.battle.enemyHealth</p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+

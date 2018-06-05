@@ -21,5 +21,10 @@ namespace RobesAndArmorGit
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .Build();
+
+        public static IWebHost buildWebHost2(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+            .UseStartup<GameData.Startup>()
+            .Build();
     }
 }

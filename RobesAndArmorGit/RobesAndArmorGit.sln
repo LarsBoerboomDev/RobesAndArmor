@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameData", "GameData\GameDa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheLogic", "TheLogic\TheLogic.csproj", "{57A741E6-C755-44A1-BE01-90B6243DCECB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{6B520C79-FB01-4499-80D8-5C7ED0352F67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{6B520C79-FB01-4499-80D8-5C7ED0352F67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobesAndArmorUnitTestings", "RobesAndArmorUnitTestings\RobesAndArmorUnitTestings.csproj", "{F19AA3F6-533E-4206-A5D5-C8195910AA0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{6B520C79-FB01-4499-80D8-5C7ED0352F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B520C79-FB01-4499-80D8-5C7ED0352F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B520C79-FB01-4499-80D8-5C7ED0352F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F19AA3F6-533E-4206-A5D5-C8195910AA0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F19AA3F6-533E-4206-A5D5-C8195910AA0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F19AA3F6-533E-4206-A5D5-C8195910AA0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F19AA3F6-533E-4206-A5D5-C8195910AA0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
