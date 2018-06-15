@@ -86,7 +86,7 @@ namespace RobesAndArmorGit.Controllers
 
 
 
-            //enemyItem.AllItems = await _context.Items.ToListAsync();
+            enemyItem.AllItems = await _context.Items.ToListAsync();
             //enemyItem.Type = await _context.Types.ToListAsync();
             enemyItem.Enemy = new Enemy();
 
@@ -109,11 +109,7 @@ namespace RobesAndArmorGit.Controllers
             enemy.Def = Convert.ToInt32(def);
             enemy.Health = Convert.ToInt32(health);
             enemy.imageUrl = enemyImage;
-
-            Enemies enemies = new Enemies(_context);
-
-            enemies.create(enemy, drops);
-            /*
+            
             _context.Add(enemy);
             await _context.SaveChangesAsync();
              
@@ -139,7 +135,7 @@ namespace RobesAndArmorGit.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            */
+            
             //return View(enemy);
             return RedirectToAction(nameof(Index));
         }

@@ -1,0 +1,9 @@
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\intergrationTests\bin\Debug\netcoreapp2.0\intergrationTests.deps.json
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\intergrationTests\bin\Debug\netcoreapp2.0\intergrationTests.dll
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\intergrationTests\obj\Debug\netcoreapp2.0\intergrationTests.csprojAssemblyReference.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\intergrationTests\obj\Debug\netcoreapp2.0\intergrationTests.csproj.CoreCompileInputs.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\intergrationTests\obj\Debug\netcoreapp2.0\intergrationTests.AssemblyInfoInputs.cache
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\intergrationTests\obj\Debug\netcoreapp2.0\intergrationTests.AssemblyInfo.cs
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\intergrationTests\bin\Debug\netcoreapp2.0\intergrationTests.pdb
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\intergrationTests\obj\Debug\netcoreapp2.0\intergrationTests.dll
+C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\intergrationTests\obj\Debug\netcoreapp2.0\intergrationTests.pdb

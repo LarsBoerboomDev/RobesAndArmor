@@ -23,6 +23,8 @@ C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndAr
 --file=C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\Views\ApplicationUsers\Edit.cshtml
 --file=C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\Views\ApplicationUsers\Index.cshtml
 --file=C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\Views\Battle\Battle.cshtml
+--file=C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\Views\Battle\Lose.cshtml
+--file=C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\Views\Battle\Win.cshtml
 --file=C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\Views\Characters\CharacterInformation.cshtml
 --file=C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\Views\Characters\CharacterInformationOld.cshtml
 --file=C:\Users\larsb\Documents\Visual Studio 2017\Projects\RobesAndArmorGIT\RobesAndArmorGit\RobesAndArmorGit\Views\Characters\Create.cshtml

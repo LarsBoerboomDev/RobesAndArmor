@@ -248,6 +248,34 @@ namespace GameData.Migrations
                     b.ToTable("Items");
                 });
 
+            modelBuilder.Entity("GameData.Models.ItemArchive", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Atk");
+
+                    b.Property<int>("Def");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("Health");
+
+                    b.Property<int>("Level");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Rarity");
+
+                    b.Property<string>("imgeUrl");
+
+                    b.Property<int>("price");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("itemArchives");
+                });
+
             modelBuilder.Entity("GameData.Models.News", b =>
                 {
                     b.Property<int>("Id")

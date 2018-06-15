@@ -101,9 +101,19 @@ namespace RobesAndArmorUnitTestings
             RobesAndArmorGit.Logic.EnemyDropCalc enemyDropCalc = new RobesAndArmorGit.Logic.EnemyDropCalc();
 
 
-            Assert.Equal(item1, enemyDropCalc.calcDrop(items));
+         //   Assert.Equal(item1, enemyDropCalc.calcDrop(items));
+        }
 
+        [Fact]
+        public void checkcalcOnDeadMoney()
+        {
 
+            RobesAndArmorGit.Logic.CharacterDeadCalc characterDeadCalc = new RobesAndArmorGit.Logic.CharacterDeadCalc();
+
+            GameData.Models.Character character = new GameData.Models.Character();
+            character.gold = 500;
+
+            Assert.Equal(450, characterDeadCalc.calcOnDeadMoney(character).gold);
         }
 
     }

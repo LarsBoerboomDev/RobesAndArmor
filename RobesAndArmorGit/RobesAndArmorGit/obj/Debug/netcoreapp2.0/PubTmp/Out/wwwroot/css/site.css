@@ -1,0 +1,196 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+.faces{
+    width: 120px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    height: 150px;
+    background-color: #9fa1a5;
+    float: left;
+}
+.faces img{
+    width: 100%;    
+}
+.CharacterDropDown{
+    height: 200px;
+    width: 100px;
+    background-color: grey;
+}
+.faceList{
+    height: 100%;
+    overflow: auto;
+}
+.imageList{
+    max-height: 500px;
+    overflow: auto;
+}
+.imageList img{
+    height: 100px;
+}
+.imgList{
+    height:300px;
+    overflow: auto;
+}
+.imgList img{
+    height: 75px;
+}
+.item{
+    border: 2px #cccdce;
+    border-radius: 8px;
+}
+
+
+/*
+Character information page
+*/
+.characterShow{
+
+}
+.statPanel{
+    height: 500px;
+    width: 300px;
+    background-image:url('../images/papertexture.jpg');
+    background-repeat: repeat; 
+}
+.Meters{
+    padding-top: 25px;    
+}
+.Meters label{
+    float: left;
+}
+.healthMeter{
+    width: 250px;
+    height: 20px;
+    margin-top: 20px;  
+    background-color: red;  
+}
+.healthMeter::-webkit-meter-bar {background: #e6e6e9;} /*background color of bar*/
+.healthMeter::-webkit-meter-optimum-value {background: #ff0000;}
+.healthMeter::-webkit-meter-suboptimum-value{background:orange;}
+.healthMeter::-webkit-meter-even-less-good-value{background:red;}
+
+.expMeter{
+    width: 250px;
+    height: 20px;
+    margin-top: 20px;  
+}
+.expMeter::-webkit-meter-bar {background: #e6e6e9;} /*background color of bar*/
+.expMeter::-webkit-meter-optimum-value {background:  #000099;}
+.expMeter::-webkit-meter-suboptimum-value{background:orange;}
+.expMeter::-webkit-meter-even-less-good-value{background:red;}
+.stat{
+    padding-top: 25px;
+}
+.equipmentPanel{
+    height: 500px;
+    width: 300px;
+    overflow-x: auto;
+    background-image:url('../images/papertexture.jpg');
+    background-repeat: repeat;     
+}
+.panelSlots{    
+    height: 290px;
+}
+.toggleButton{
+    width: 100%;
+}
+.slot{
+    height: 65px;
+    width: 65px;
+    border-style: solid;
+    border-width: 2px;    
+}
+.slot2{
+    height: 65px;
+    width: 65px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-width: 2px;    
+    float: left;
+}
+.slot2 img{
+    width: 55px;
+}
+.slot img{
+    width: 55px;
+}
+.head{
+    margin-left: 125px;    
+}
+.body{
+    margin-left: 125px;
+    margin-top: 5px;
+}
+.legs{
+    margin-left: 125px;
+    margin-top:5px;
+}
+.feet{
+ margin-left: 125px;
+    margin-top:5px;   
+}
+.glove{
+    margin-left: 195px;
+    margin-top: -205px;
+}
+.weapon{
+    margin-left: 55px;
+    margin-top: -65px;
+}
+.shield{
+    margin-left: 55px;
+    margin-top: 5px;
+}
+.shop{
+
+}
+.Shopitem{
+    
+}
+.myDropdown{
+    display: none;
+}
+.show {display:block;}
+.dropdown-content{
+    display: none;
+}
+.dropdownItem{
+    height: 150px;
+    width: 100px;
+    position: relative;
+    background-color: grey;
+}

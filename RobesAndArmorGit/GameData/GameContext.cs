@@ -19,8 +19,9 @@ namespace GameData
         public DbSet<Inventory_has_Item> Inventory_has_Item { get; set; }
         public DbSet<Enemy_has_Item> Enemy_has_Item { get; set; }
         public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<ItemArchive> itemArchives { get; set; }
         public DbSet<Battle> battles { get; set; }
-
+        
 
         
 

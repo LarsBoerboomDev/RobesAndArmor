@@ -13,16 +13,18 @@
 <div class="battleScreen">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <p>@Model.character.Name</p>
-                <p>@Model.character.Health</p>
-                <p>@Model.character.str</p>
+            <div class="col-md-4">               
+                <img src="~/images/faces/@Model.character.imageUrl" />
+                <p>Name: @Model.character.Name</p>
+                <p>Health: @Model.character.Health</p>
+                <p>Str: @Model.character.str</p>
                 <a asp-action="damage" asp-route-id="@Model.battle.Id">Attack</a>
             </div>
             <div class="col-md-8">
-                <p>@Model.enemy.Name</p>
-                <p>@Model.enemy.Atk</p>
-                <p>@Model.battle.enemyHealth</p>
+                <img src="~/images/Enemy/@Model.enemy.imageUrl" />
+                <p>Name: @Model.enemy.Name</p>
+                <p>Atk: @Model.enemy.Atk</p>
+                <p>Health: @Model.battle.enemyHealth</p>
 
             </div>
 

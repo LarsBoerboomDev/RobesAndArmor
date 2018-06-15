@@ -16,9 +16,7 @@ namespace RobesAndArmorGit.Logic
             enemy.Health = enemy.Health - character.str;
 
             damage.character = character;
-            damage.enemy = enemy;
-
-
+            damage.enemy = enemy;            
 
             return damage;
 

@@ -53,6 +53,7 @@ namespace RobesAndArmorGit.Controllers
 
         private  bool checkForExistingBattle(GameData.Models.Character character)
         {
+            //checks if there is an already started battle in the database
             GameData.Models.Battle battle =  _context.battles.SingleOrDefault(m => m.characterID == character.Id);
             if(battle == null)
             {
@@ -63,6 +64,7 @@ namespace RobesAndArmorGit.Controllers
                 return true;
             }
         }
+
         private GameData.Models.Battle newBattle(GameData.Models.Character character)
         {
             GameData.Models.Battle battle = new GameData.Models.Battle();
@@ -79,6 +81,7 @@ namespace RobesAndArmorGit.Controllers
         }
         private GameData.Models.Enemy randomEnemy(int level)
         {
+            //Picks a random enemy within range from the characters level
             int charlevel = level;
             IEnumerable<GameData.Models.Enemy> enemies = _context.Set<GameData.Models.Enemy>().FromSql("EXEC GetEnemieswithLevel " +  charlevel);
             List<GameData.Models.Enemy> listEnemy = enemies.Cast<GameData.Models.Enemy>().ToList();
@@ -86,6 +89,35 @@ namespace RobesAndArmorGit.Controllers
             int r = rnd.Next(listEnemy.Count());
             return listEnemy[r];
         }
+
+        private async void deadCharacter()
+        {
+            //character is dead delete 10% of his money and update health to full
+            Logic.CharacterDeadCalc characterDeadCalc = new Logic.CharacterDeadCalc(); 
+            ApplicationUser usr = await GetCurrentUserAsync();
+            GameData.Models.Character character = await _context.Characters.SingleOrDefaultAsync(m => m.UserID == usr.UserName);
+
+            character = characterDeadCalc.calcOnDeadMoney(character);
+            character.Health = 500;
+
+            GameData.Models.Battle battle = _context.battles.SingleOrDefault(m => m.characterID == character.Id);
+
+            _context.Update(character);
+            await _context.SaveChangesAsync();
+
+            _context.battles.Remove(battle);
+            await _context.SaveChangesAsync();
+
+
+
+
+        }
+        private void deadEnemy()
+        {
+            
+            //ask for the drops
+        }
+
         
         public async Task<IActionResult> damage(int? id)
         {
@@ -94,21 +126,49 @@ namespace RobesAndArmorGit.Controllers
 
             Logic.DamageCalc calcdam = new Logic.DamageCalc();
             GameData.Models.Character character =  _context.Characters.FirstOrDefault(m => m.Id == battle.characterID);
+            
+
+
 
 
             Models.ViewModels.Damage damage =  calcdam.calcDamage( _context.Characters.FirstOrDefault(m => m.Id == battle.characterID),  _context.Enemies.FirstOrDefault(m => m.Id == battle.enemyId));
+            battle.enemyHealth = damage.enemy.Health;            
 
-            battle.enemyHealth = damage.enemy.Health;
-            _context.Update(battle);
-            await _context.SaveChangesAsync();
+            if (calcdam.checkIfCharDead(damage.character))
+            {
+                //character is dead
+
+                deadCharacter();
+            }else if (calcdam.checkIfEnemyDead(battle))
+            {
+                //enemy is dead
+                
+                deadEnemy();
+            }
+            else
+            {
+                //battle goes on as nobody is dead
+                _context.Update(battle);
+                await _context.SaveChangesAsync();
+
+                character.Health = damage.character.Health;
+                _context.Update(character);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("battle", "Battle");
+            }
 
 
             
+            
 
             
+                        
             return RedirectToAction("battle", "Battle");
 
-            return View("~/Views/Characters/Battle.cshtml", battle);
+            
+
+            //return View("~/Views/Characters/Battle.cshtml", battle);
         }
 
     }

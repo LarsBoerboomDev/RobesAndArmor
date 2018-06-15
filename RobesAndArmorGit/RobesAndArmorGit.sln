@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheLogic", "TheLogic\TheLog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{6B520C79-FB01-4499-80D8-5C7ED0352F67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobesAndArmorUnitTestings", "RobesAndArmorUnitTestings\RobesAndArmorUnitTestings.csproj", "{F19AA3F6-533E-4206-A5D5-C8195910AA0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RobesAndArmorUnitTestings", "RobesAndArmorUnitTestings\RobesAndArmorUnitTestings.csproj", "{F19AA3F6-533E-4206-A5D5-C8195910AA0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "intergrationTests", "intergrationTests\intergrationTests.csproj", "{979F9B45-3626-4A66-BC63-AEC7BC56FF77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F19AA3F6-533E-4206-A5D5-C8195910AA0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F19AA3F6-533E-4206-A5D5-C8195910AA0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F19AA3F6-533E-4206-A5D5-C8195910AA0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{979F9B45-3626-4A66-BC63-AEC7BC56FF77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{979F9B45-3626-4A66-BC63-AEC7BC56FF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{979F9B45-3626-4A66-BC63-AEC7BC56FF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{979F9B45-3626-4A66-BC63-AEC7BC56FF77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
